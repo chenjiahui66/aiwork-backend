@@ -1,0 +1,70 @@
+"""
+Pydantic 数据模型 - API 层与 rag 层之间共享
+"""
+from typing import Literal
+
+from pydantic import BaseModel, Field
+
+
+# ===== 上传相关 =====
+
+class UploadResponse(BaseModel):
+    """上传文档后的响应"""
+    doc_id: str = Field(..., description="文档唯一 ID(后续管理用)")
+    filename: str = Field(..., description="原始文件名")
+    file_size: int = Field(..., description="文件大小(字节)")
+    chunk_count: int = Field(..., description="切片数量")
+    status: Literal["success", "failed"] = "success"
+    message: str = ""
+
+
+class DocumentInfo(BaseModel):
+    """知识库中文档列表项"""
+    doc_id: str
+    filename: str
+    file_size: int
+    upload_time: str  # ISO 格式
+    chunk_count: int
+
+
+class DocumentListResponse(BaseModel):
+    """文档列表响应"""
+    total: int
+    documents: list[DocumentInfo]
+
+
+# ===== 对话相关 =====
+
+class ChatSource(BaseModel):
+    """引用来源(检索到的文档片段)"""
+    chunk_id: str = Field(..., description="chunk ID")
+    doc_id: str
+    filename: str
+    content: str = Field(..., description="片段内容")
+    score: float = Field(..., description="相似度分数(越低越相似)")
+
+
+class ChatRequest(BaseModel):
+    """对话请求"""
+    question: str = Field(..., min_length=1, max_length=2000)
+    top_k: int | None = Field(None, description="覆盖默认 top_k")
+    history: list[dict] = Field(
+        default_factory=list,
+        description="对话历史, 格式 [{role: 'user'|'assistant', content: '...'}]",
+    )
+
+
+class ChatResponse(BaseModel):
+    """对话响应(非流式)"""
+    answer: str
+    sources: list[ChatSource]
+
+
+# ===== 通用 =====
+
+class HealthResponse(BaseModel):
+    """健康检查"""
+    status: Literal["ok", "degraded"] = "ok"
+    llm_model: str
+    embedding_model: str
+    chroma_dir: str
