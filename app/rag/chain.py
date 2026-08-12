@@ -100,7 +100,7 @@ async def chat(
             "doc_id": doc.metadata.get("doc_id", ""),
             "filename": doc.metadata.get("filename", "unknown"),
             "content": doc.page_content[:500],  # 截断避免返回太大
-            "score": round(score, 4),
+            "score": float(round(float(score), 4)),  # numpy float32 -> python float
         }
         for doc, score in results
     ]
