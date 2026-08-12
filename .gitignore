@@ -8,6 +8,7 @@ env/
 
 # 配置
 .env
+.env.example
 
 # 数据
 data/uploads/*
