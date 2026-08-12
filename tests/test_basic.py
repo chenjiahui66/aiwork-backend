@@ -13,16 +13,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 def check_env() -> bool:
-    """检查环境变量"""
+    """Check environment variables."""
     from app.core.config import settings
-    if not settings.siliconflow_api_key:
-        print("❌ SILICONFLOW_API_KEY 未配置")
-        print("   请复制 .env.example 为 .env 并填入 API Key")
+    if not settings.minimax_api_key:
+        print("❌ MINIMAX_API_KEY not set")
+        print("   Please copy .env.example to .env and fill the key")
         return False
-    print(f"✅ API Key 已配置 (前 8 位: {settings.siliconflow_api_key[:8]}...)")
-    print(f"   LLM Model: {settings.llm_model}")
-    print(f"   Embedding Model: {settings.embedding_model}")
-    print(f"   Chroma Dir: {settings.chroma_path}")
+    print(f"✅ API Key set (first 8 chars: {settings.minimax_api_key[:8]}...)")
+    print(f"   LLM Model    : {settings.llm_model}")
+    print(f"   LLM Base URL : {settings.minimax_base_url}")
+    print(f"   Embedding    : {settings.embedding_model} (local)")
+    print(f"   Chroma Dir   : {settings.chroma_path}")
     return True
 
 

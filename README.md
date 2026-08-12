@@ -17,8 +17,8 @@
 | 组件 | 选型 | 理由 |
 |------|------|------|
 | Web 框架 | FastAPI | 异步、SSE 原生支持、自动 OpenAPI 文档 |
-| LLM | 硅基流动 Qwen2.5-72B | 中文强、性价比高 |
-| Embedding | 硅基流动 bge-m3 | 中文 SOTA、余弦相似度 |
+| LLM | MiniMax-M3（OpenAI 兼容协议） | 1M 上下文、强 Coding/Agent |
+| Embedding | 本地 bge-small-zh-v1.5 | 中文 SOTA、零 API 成本、~100MB |
 | 向量库 | Chroma（本地持久化） | 零部署成本 |
 | 文档解析 | pypdf / python-docx / unstructured | 按格式分发 |
 
@@ -31,8 +31,7 @@
 ```bash
 cd D:\project\MVPdemo\aiwork-backend
 python -m venv .venv
-.venv\Scripts\activate            # Windows
-# source .venv/bin/activate       # Linux/Mac
+.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -47,18 +46,29 @@ pip install -r requirements.txt
 复制 `.env.example` 为 `.env` 并填入 API Key：
 
 ```bash
-cp .env.example .env       # Mac/Linux
 copy .env.example .env     # Windows
 ```
 
-然后编辑 `.env`：
+编辑 `.env`：
 
 ```env
-SILICONFLOW_API_KEY=sk-xxxxxxxxxxxxxx
+MINIMAX_API_KEY=sk-xxxxxxxxxxxxxx
 ```
 
-申请地址：[https://cloud.siliconflow.cn](https://cloud.siliconflow.cn)
-（注册送 ¥0.4 额度，足够跑几千次问答）
+申请地址：[https://platform.minimaxi.com](https://platform.minimaxi.com)
+（首次使用注册送额度，足够跑大量测试）
+
+### 3. 启动
+
+```bash
+python -m app.main
+```
+
+启动后访问：
+- 接口文档：http://localhost:8001/docs
+- 健康检查：http://localhost:8001/health
+
+> **首次启动会自动下载 embedding 模型**（BAAI/bge-small-zh-v1.5，约 100MB），需要联网，之后会缓存到本地。
 
 ### 3. 启动
 

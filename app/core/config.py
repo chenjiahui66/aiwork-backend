@@ -1,51 +1,49 @@
 """
-全局配置: 从 .env 读取,所有模块从这里取
+Global configuration loaded from .env
 """
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """应用配置(自动从 .env 加载,支持类型校验)"""
-
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
-        extra="ignore",  # 忽略 .env 里多余的字段
+        extra="ignore",
     )
 
-    # ===== 硅基流动 =====
-    siliconflow_api_key: str = ""
+    # ===== MiniMax =====
+    minimax_api_key: str = ""
+    minimax_base_url: str = "https://api.minimaxi.com/v1"
 
     # ===== LLM =====
-    llm_model: str = "Qwen/Qwen2.5-72B-Instruct"
+    llm_model: str = "MiniMax-M3"
     llm_temperature: float = 0.3
     llm_max_tokens: int = 2048
 
-    # ===== Embedding =====
-    embedding_model: str = "BAAI/bge-m3"
-    embedding_base_url: str = "https://api.siliconflow.cn/v1"
+    # ===== Embedding (local HF model) =====
+    embedding_model: str = "BAAI/bge-small-zh-v1.5"
+    embedding_device: str = "cpu"           # cpu / cuda / mps
+    embedding_normalize: bool = True
 
-    # ===== 切片 =====
+    # ===== Splitter =====
     chunk_size: int = 500
     chunk_overlap: int = 80
 
-    # ===== 检索 =====
+    # ===== Retrieval =====
     retrieval_top_k: int = 4
 
-    # ===== 服务 =====
+    # ===== Server =====
     app_host: str = "0.0.0.0"
     app_port: int = 8001
 
-    # ===== 路径 =====
+    # ===== Paths =====
     data_dir: str = "./data"
     upload_dir: str = "./data/uploads"
     chroma_dir: str = "./data/chroma"
 
-    # ===== 派生路径(解析为绝对路径)=====
     @property
     def project_root(self) -> Path:
-        """项目根目录 (aiwork-backend/)"""
         return Path(__file__).resolve().parent.parent.parent
 
     @property
@@ -65,5 +63,4 @@ class Settings(BaseSettings):
         return p
 
 
-# 单例
 settings = Settings()
