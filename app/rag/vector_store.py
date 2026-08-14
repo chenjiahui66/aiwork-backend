@@ -75,6 +75,7 @@ def add_chunks(chunks: list[Document], doc_id: str) -> int:
     for idx, chunk in enumerate(chunks):
         chunk.metadata["doc_id"] = doc_id
         chunk.metadata["chunk_index"] = idx
+        chunk.metadata["chunk_id"] = f"{doc_id}::{idx}"
 
     # 加载或创建 store
     store = get_vector_store()
