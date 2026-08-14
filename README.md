@@ -62,6 +62,8 @@ MINIMAX_API_KEY=sk-xxxxxxxxxxxxxx
 
 ```bash
 python -m app.main
+
+.\.venv\Scripts\python.exe run.py
 ```
 
 启动后访问：
