@@ -14,9 +14,14 @@ RestartSec=3
 StandardOutput=append:/var/log/aiwork-backend/out.log
 StandardError=append:/var/log/aiwork-backend/err.log
 
-# 资源限制（低内存机器友好）
-MemoryMax=512M
-MemoryHigh=384M
+# 资源限制
+# BAAI/bge-small-zh-v1.5 模型加载峰值 ~250MB
+# FAISS 索引 50MB+
+# LangChain + FastAPI 运行时 200MB+
+# 总共平稳状态 600-800MB, 峰值冲击 1GB+
+# 因此 MemoryMax=1.5G 给充足空间, MemoryHigh=1G 让 throttle 早介入
+MemoryMax=1536M
+MemoryHigh=1024M
 CPUQuota=80%
 
 [Install]
