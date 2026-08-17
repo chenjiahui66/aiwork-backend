@@ -30,7 +30,7 @@ if [ ! -f "$AITOOLS_CONF" ]; then
 fi
 
 # 0. 防重复
-if grep -q '# AiWork RAG Backend' "$AITOOLS_CONF"; then
+if grep -qF 'AiWork RAG Backend (auto-inserted' "$AITOOLS_CONF"; then
     echo "[跳过] aitools.conf 已经包含 AiWork RAG Backend location, 不重复插入"
     echo "       想强制重插, 先手动从 aitools.conf 删掉 # AiWork RAG Backend 那一段, 再跑本脚本"
     exit 0
@@ -42,7 +42,8 @@ cp "$AITOOLS_CONF" "$BACKUP_DIR/aitools.conf.bak.$TS"
 echo "[1/4] 备份完成: aitools.conf.bak.$TS"
 
 # 2. 找 server 块的最后那个 } 行号
-LAST_LINE=$(grep -n '^}' "$AITOOLS_CONF" | tail -n 1 | cut -d: -f1)
+#    注意: nginx 配置通常缩进, 所以 } 前面可能有空格, 不能用 '^}'
+LAST_LINE=$(grep -n '^\s*}' "$AITOOLS_CONF" | tail -n 1 | cut -d: -f1)
 if [ -z "$LAST_LINE" ]; then
     echo "[ERROR] 找不到 server 块的闭合 }, 退出"
     echo "       可能文件结构非标准, 请手动检查 $AITOOLS_CONF"
