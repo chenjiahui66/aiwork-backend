@@ -222,6 +222,33 @@ def list_documents() -> list[dict]:
     return list(grouped.values())
 
 
+def get_chunks_by_doc_id(doc_id: str) -> list[Document]:
+    """
+    取出某个 doc_id 的所有 chunk (按 chunk_index 顺序由调用方排序)。
+
+    摘要模块需要这个 —— 把一篇文档的所有片段拼起来再摘要。
+    """
+    persist_dir = settings.chroma_path
+    pkl_file = persist_dir / f"{INDEX_NAME}.pkl"
+
+    if not pkl_file.exists():
+        return []
+
+    try:
+        with open(pkl_file, "rb") as f:
+            data = pickle.load(f)
+        docstore = data[0]
+    except Exception as e:
+        logger.warning("读 index 失败: %s", e)
+        return []
+
+    chunks = [
+        doc for doc in docstore._dict.values()
+        if doc.metadata.get("doc_id") == doc_id
+    ]
+    return chunks
+
+
 def reset_vector_store() -> None:
     """Danger: wipe the vector store (for testing)."""
     p = settings.chroma_path

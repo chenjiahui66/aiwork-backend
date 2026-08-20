@@ -84,3 +84,21 @@ class WriterRequest(BaseModel):
     write_type: str = Field(..., description="写作类型: email/weekly_report/marketing/speech")
     inputs: dict = Field(..., description="写作参数(按类型不同)")
     history: list[dict] = Field(default_factory=list, description="多轮对话历史")
+
+
+# ===== 摘要相关 =====
+
+class TextSummaryRequest(BaseModel):
+    """纯文本摘要请求"""
+    text: str = Field(..., min_length=10, description="要摘要的文本")
+    summary_type: Literal["short", "key_points", "tldr"] = Field(
+        "short", description="摘要类型"
+    )
+
+
+class DocSummaryRequest(BaseModel):
+    """基于已入库文档的摘要请求"""
+    doc_id: str = Field(..., description="知识库中的文档 ID")
+    summary_type: Literal["short", "key_points", "tldr"] = Field(
+        "short", description="摘要类型"
+    )
