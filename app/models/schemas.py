@@ -68,3 +68,19 @@ class HealthResponse(BaseModel):
     llm_model: str
     embedding_model: str
     chroma_dir: str
+
+
+# ===== 写作相关 =====
+
+class WriterRequest(BaseModel):
+    """智能写作请求
+
+    inputs 字段根据 write_type 不同而不同:
+    - email:        {tone, recipient, requirement}
+    - weekly_report: {raw_notes}
+    - marketing:    {product_info, target_audience, word_limit}
+    - speech:       {scene, key_points, duration}
+    """
+    write_type: str = Field(..., description="写作类型: email/weekly_report/marketing/speech")
+    inputs: dict = Field(..., description="写作参数(按类型不同)")
+    history: list[dict] = Field(default_factory=list, description="多轮对话历史")
