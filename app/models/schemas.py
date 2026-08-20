@@ -130,3 +130,10 @@ class CodeRequest(BaseModel):
     code: str = Field(..., min_length=1, description="源码")
     language: str = Field(..., description="源码语言, 如 python/javascript")
     target_language: str | None = Field(None, description="翻译任务的目标语言")
+
+
+# ===== 数据洞察相关 =====
+
+class InsightQueryRequest(BaseModel):
+    """自然语言查询请求"""
+    question: str = Field(..., min_length=2, max_length=500, description="业务问题")
