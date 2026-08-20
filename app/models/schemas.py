@@ -102,3 +102,19 @@ class DocSummaryRequest(BaseModel):
     summary_type: Literal["short", "key_points", "tldr"] = Field(
         "short", description="摘要类型"
     )
+
+
+# ===== 翻译相关 =====
+
+class TranslateRequest(BaseModel):
+    """翻译请求"""
+    text: str = Field(..., min_length=1, max_length=20000, description="原文")
+    target_lang: str = Field(..., description="目标语言 code, 如 en/zh/ja")
+    source_lang: str | None = Field(None, description="源语言 code, 不传则自动检测")
+    domain: Literal["general", "business", "it", "legal", "medical"] = Field(
+        "general", description="翻译领域"
+    )
+    glossary: dict[str, str] = Field(
+        default_factory=dict,
+        description="术语表, 如 {RAG: 检索增强生成}",
+    )

@@ -6,7 +6,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, summarizer, upload, writer
+from app.api import chat, summarizer, translator, upload, writer
 from app.core.config import settings
 from app.models.schemas import HealthResponse
 
@@ -37,6 +37,7 @@ app.include_router(upload.router)
 app.include_router(chat.router)
 app.include_router(writer.router)
 app.include_router(summarizer.router)
+app.include_router(translator.router)
 
 
 @app.get("/")
