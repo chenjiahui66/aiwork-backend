@@ -118,3 +118,15 @@ class TranslateRequest(BaseModel):
         default_factory=dict,
         description="术语表, 如 {RAG: 检索增强生成}",
     )
+
+
+# ===== 代码助手相关 =====
+
+class CodeRequest(BaseModel):
+    """代码分析请求"""
+    task: Literal["explain", "refactor", "comment", "debug", "translate"] = Field(
+        ..., description="任务类型"
+    )
+    code: str = Field(..., min_length=1, description="源码")
+    language: str = Field(..., description="源码语言, 如 python/javascript")
+    target_language: str | None = Field(None, description="翻译任务的目标语言")
