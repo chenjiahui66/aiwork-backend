@@ -185,3 +185,29 @@ class WorkflowRunRequest(BaseModel):
     """工作流运行请求"""
     workflow_code: str = Field(..., description="工作流 code")
     input: str = Field(..., description="输入文本")
+
+
+# ===== 邮件相关 =====
+
+class EmailSendRequest(BaseModel):
+    """发送邮件请求
+
+    适用场景:
+    - 写作助手:周报/邮件生成完,一键发给老板
+    - 会议助手:会议纪要发给参会人
+    - 数据洞察:报表发给相关人
+    """
+    to: list[str] = Field(..., min_length=1, description="收件人列表, 至少 1 个")
+    subject: str = Field(..., min_length=1, max_length=200, description="邮件主题")
+    content: str = Field(..., min_length=1, max_length=50000, description="邮件正文")
+    cc: list[str] = Field(default_factory=list, description="抄送列表(可选)")
+    is_html: bool = Field(False, description="是否 HTML 格式")
+
+
+class EmailSendResponse(BaseModel):
+    """发送邮件响应"""
+    success: bool = True
+    message: str = "邮件已发送"
+    to: list[str]
+    cc: list[str] = Field(default_factory=list)
+    subject: str

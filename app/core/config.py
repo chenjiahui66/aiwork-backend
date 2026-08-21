@@ -42,6 +42,19 @@ class Settings(BaseSettings):
     upload_dir: str = "./data/uploads"
     chroma_dir: str = "./data/chroma"
 
+    # ===== SMTP(发邮件,可选 — 留空则 /api/email/send 不可用) =====
+    smtp_host: str = ""
+    smtp_port: int = 465
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from_name: str = "AiWork 助手"
+    smtp_timeout: int = 15
+
+    @property
+    def smtp_configured(self) -> bool:
+        """SMTP 是否配置完整 — 用在前端灰显按钮 + 后端 503 提示"""
+        return bool(self.smtp_host and self.smtp_user and self.smtp_password)
+
     @property
     def project_root(self) -> Path:
         return Path(__file__).resolve().parent.parent.parent
