@@ -177,3 +177,11 @@ class MeetingRequest(BaseModel):
     """
     task: Literal["minutes", "todo", "summary"] = Field(..., description="任务")
     transcript: str = Field(..., min_length=10, description="会议转写文本")
+
+
+# ===== 可视化工作流相关 =====
+
+class WorkflowRunRequest(BaseModel):
+    """工作流运行请求"""
+    workflow_code: str = Field(..., description="工作流 code")
+    input: str = Field(..., description="输入文本")
