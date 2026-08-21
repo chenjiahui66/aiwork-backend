@@ -6,7 +6,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, coder, designer, email, hr, insight, meeting, summarizer, translator, upload, workflow, writer
+from app.api import chat, coder, designer, email, feishu, hr, insight, meeting, summarizer, translator, upload, workflow, writer
 from app.core.config import settings
 from app.models.schemas import HealthResponse
 
@@ -45,6 +45,7 @@ app.include_router(designer.router)
 app.include_router(meeting.router)
 app.include_router(workflow.router)
 app.include_router(email.router)
+app.include_router(feishu.router)
 
 
 @app.get("/")

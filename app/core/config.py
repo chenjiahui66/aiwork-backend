@@ -55,6 +55,23 @@ class Settings(BaseSettings):
         """SMTP 是否配置完整 — 用在前端灰显按钮 + 后端 503 提示"""
         return bool(self.smtp_host and self.smtp_user and self.smtp_password)
 
+    # ===== 飞书多维表格(可选 — 留空则 /api/feishu/* 不可用) =====
+    feishu_app_id: str = ""
+    feishu_app_secret: str = ""
+    feishu_bitable_app_token: str = ""
+    feishu_bitable_table_id: str = ""
+    feishu_timeout: int = 15
+
+    @property
+    def feishu_configured(self) -> bool:
+        """飞书是否配置完整 — 用在前端灰显按钮 + 后端 503 提示"""
+        return bool(
+            self.feishu_app_id
+            and self.feishu_app_secret
+            and self.feishu_bitable_app_token
+            and self.feishu_bitable_table_id
+        )
+
     @property
     def project_root(self) -> Path:
         return Path(__file__).resolve().parent.parent.parent

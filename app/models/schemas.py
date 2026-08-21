@@ -211,3 +211,76 @@ class EmailSendResponse(BaseModel):
     to: list[str]
     cc: list[str] = Field(default_factory=list)
     subject: str
+
+
+# ===== 飞书多维表格 =====
+
+class FeishuStatusResponse(BaseModel):
+    """飞书配置状态"""
+    configured: bool
+    app_token: str = ""
+    table_id: str = ""
+    table_url: str = ""  # 给前端拼个可点链接
+
+
+class FeishuTable(BaseModel):
+    """多维表格数据表项"""
+    table_id: str
+    name: str
+
+
+class FeishuTablesResponse(BaseModel):
+    """列出数据表响应"""
+    tables: list[FeishuTable]
+
+
+class FeishuField(BaseModel):
+    """字段定义"""
+    field_id: str
+    field_name: str
+    type: int
+    type_name: str = ""
+
+
+class FeishuFieldsResponse(BaseModel):
+    """列出字段响应"""
+    fields: list[FeishuField]
+
+
+class FeishuPushRequest(BaseModel):
+    """推送记录请求
+
+    前端可以传两种格式:
+    1) 直接 records: [{title: "..", owner: ".."}, ...]  — 我们自动包成 {fields: {...}}
+    2) records: [{fields: {...}}, ...]                    — 直接发
+    """
+    records: list[dict] = Field(..., min_length=1, max_length=1000)
+    table_id: str | None = Field(None, description="覆盖默认 table_id")
+
+
+class FeishuPushResponse(BaseModel):
+    """推送记录响应"""
+    success: bool = True
+    message: str = "已写入飞书多维表格"
+    record_count: int
+    record_ids: list[str] = Field(default_factory=list)
+
+
+class FeishuParseTodosRequest(BaseModel):
+    """从会议文本/纪要解析待办 — 后端 LLM 二次提取"""
+    text: str = Field(..., min_length=10, max_length=30000)
+    meeting_title: str | None = Field(None, description="可选会议标题")
+
+
+class FeishuParsedTodo(BaseModel):
+    """解析出的一条待办"""
+    title: str = Field(..., description="任务标题")
+    owner: str | None = Field(None, description="责任人(如有)")
+    due_date: str | None = Field(None, description="截止日期 YYYY-MM-DD(如有)")
+    priority: Literal["高", "中", "低"] | None = Field(None, description="优先级")
+
+
+class FeishuParseTodosResponse(BaseModel):
+    """解析待办响应"""
+    todos: list[FeishuParsedTodo]
+    raw: str = Field("", description="LLM 原始输出 — 调试用")

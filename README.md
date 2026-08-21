@@ -10,8 +10,18 @@
 |------|----------|------|
 | 🧠 智能问答 RAG | `/api/upload` `/api/chat` `/api/documents` | 文档入库 + 基于资料的流式问答（带引用） |
 | ✍️ 智能写作 | `/api/writer/*` | 邮件 / 周报 / 营销文案 / 演讲稿流式生成 |
+| 📄 文档摘要 | `/api/summarizer/*` | 长文/会议纪要 → 短摘要 / 要点 / TL;DR |
+| 🌐 智能翻译 | `/api/translator/*` | 14 语言 + 5 领域 + 术语表 |
+| 💻 AI 代码助手 | `/api/coder/*` | 解释 / 重构 / 注释 / 调试 / 翻译（17 语言） |
+| 📊 数据洞察 | `/api/insight/*` | 自然语言 → SQL → ECharts 图表（演示 SQLite） |
+| 👥 HR 助手 | `/api/hr/*` | JD 生成 / 简历筛选 / 入职材料 |
+| 🎨 AI 设计助手 | `/api/designer/*` | 生成可粘贴到 MJ/即梦的英文 Prompt |
+| 🎙️ 会议助手 | `/api/meeting/*` | 浏览器 STT + 会议纪要 / 待办 / 摘要 |
+| 🔗 可视化工作流 | `/api/workflow/*` | LangGraph StateGraph 多步流水线（4 模板） |
+| 📧 **SMTP 发邮件** | `/api/email/*` | 通用"发邮件"按钮（SMTP 协议，零新依赖） |
+| 📊 **飞书多维表格** | `/api/feishu/*` | 一键导入会议任务到飞书 Bitable |
 
-> 新增模块原则：一个能力一个文件夹，不混。
+> 新增模块原则：**一个能力一个文件夹**，不混。
 
 ### 智能问答 RAG 能力
 
@@ -28,6 +38,32 @@
 - 📢 营销文案（产品卖点 → 有吸引力文案）
 - 🎤 演讲稿（场景 + 核心观点 → 完整演讲稿）
 
+### 数据洞察能力
+
+- 🧠 Text-to-SQL：自然语言问题 → 安全 SQL（SELECT-only + 正则黑名单 + SQLite 只读连接）
+- 📈 自动图表选型：2 列 ≤6 行 → 饼图；3 列含日期 → 折线；其他 → 柱状/表格
+- 🎁 自带演示库：products/sales/employees/user_activity 启动自动灌种子
+
+### 可视化工作流能力
+
+- 🧩 真正的 LangGraph StateGraph（不是用 asyncio 假装）
+- 📝 4 预置模板：文档总结流水线 / 客户评论分析 / 竞品对比 / PRD 生成器
+- 📊 节点产物累积展示 + 步骤进度条
+
+### SMTP 发邮件能力
+
+- 📧 走标准库 `smtplib`，零新增依赖
+- 🔌 兼容 QQ / 163 / Gmail / 腾讯企业邮（同一个 SMTP 代码）
+- 📋 适配 465 SSL / 587 STARTTLS / 25 明文（明文仅 mock 用）
+- 🚨 4 类细分异常：401 认证 / 502 连接 / 400 拒收 / 503 未配置
+
+### 飞书多维表格能力
+
+- 📊 一键"导入会议任务"到飞书 Bitable
+- 🧠 后端 LLM 二次解析会议文本 → 结构化待办 JSON
+- ✏️ 前端可手动编辑后再推送
+- 🔑 `tenant_access_token` 2 小时缓存 + 自动刷新
+
 ## 技术栈
 
 | 组件 | 选型 | 理由 |
@@ -36,7 +72,10 @@
 | LLM | MiniMax-M3（OpenAI 兼容协议） | 1M 上下文、强 Coding/Agent |
 | Embedding | 本地 BAAI/bge-small-zh-v1.5 | 中文 SOTA、零 API 成本、~100MB |
 | 向量库 | FAISS（faiss-cpu） | Chroma 在 Windows 需 MSVC，FAISS 有预编译包 |
-| 文档解析 | pypdf / python-docx / unstructured | 按格式分发 |
+| 文档解析 | pypdf / python-docx / markdown | 按格式分发 |
+| 工作流 | LangGraph StateGraph | 真正的图状态机 |
+| 邮件 | Python 标准库 smtplib | 零新增依赖 |
+| 飞书 | httpx + 飞书 OpenAPI | 异步 HTTP，无 SDK 依赖 |
 
 ## 快速开始
 
@@ -109,6 +148,41 @@ MINIMAX_API_KEY=sk-xxxxxxxxxxxxxx
 |------|------|------|
 | GET  | `/api/writer/types` | 列出支持的写作类型 |
 | POST | `/api/writer/generate` | 流式生成写作内容（SSE） |
+
+### 文档摘要 / 翻译 / 代码助手 / 数据洞察 / HR / 设计 / 会议
+
+每个模块统一风格：
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET  | `/api/<module>/options` | 前端下拉选项（字段 schema / 类型等） |
+| POST | `/api/<module>/process` | 流式处理（SSE） |
+
+具体路径：`/api/summarizer/*` `/api/translator/*` `/api/coder/*` `/api/insight/*` `/api/hr/*` `/api/designer/*` `/api/meeting/*`
+
+### 可视化工作流
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET  | `/api/workflow/options` | 列出所有预置工作流模板 |
+| POST | `/api/workflow/run` | 流式运行（SSE 事件：`workflow_meta` / `node_start` / `token` / `node_end` / `done`） |
+
+### SMTP 发邮件
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET  | `/api/email/status` | 检查 SMTP 是否配好（前端灰显按钮用） |
+| POST | `/api/email/send` | 发送邮件（to/cc/subject/content/is_html） |
+
+### 飞书多维表格
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET  | `/api/feishu/status` | 检查飞书是否配好 + 目标表格 URL |
+| GET  | `/api/feishu/tables` | 列出多维表格下所有数据表（调试用） |
+| GET  | `/api/feishu/tables/{tid}/fields` | 列出表的字段定义（前端用） |
+| POST | `/api/feishu/push-records` | 批量新增记录（最多 1000 条） |
+| POST | `/api/feishu/parse-todos` | LLM 把会议文本解析成结构化待办 JSON（SSE） |
 
 ### 示例：上传文档
 
@@ -187,7 +261,17 @@ aiwork-backend/
 │   ├── api/                       # —— HTTP 边界层，每个模块一个文件 ——
 │   │   ├── upload.py              # /api/upload, /api/documents  (问答)
 │   │   ├── chat.py                # /api/chat (SSE)            (问答)
-│   │   └── writer.py              # /api/writer/*               (写作)
+│   │   ├── writer.py              # /api/writer/*               (写作)
+│   │   ├── summarizer.py          # /api/summarizer/*           (摘要)
+│   │   ├── translator.py          # /api/translator/*           (翻译)
+│   │   ├── coder.py               # /api/coder/*                (代码)
+│   │   ├── insight.py             # /api/insight/*              (数据)
+│   │   ├── hr.py                  # /api/hr/*                   (HR)
+│   │   ├── designer.py            # /api/designer/*             (设计)
+│   │   ├── meeting.py             # /api/meeting/*              (会议)
+│   │   ├── workflow.py            # /api/workflow/*             (工作流)
+│   │   ├── email.py               # /api/email/*                (SMTP)
+│   │   └── feishu.py              # /api/feishu/*               (飞书 Bitable)
 │   │
 │   ├── core/                      # —— 共享基础设施，谁都能用 ——
 │   │   ├── config.py              # pydantic-settings 配置
@@ -200,21 +284,29 @@ aiwork-backend/
 │   │   └── chain.py               # RAG 链：检索 → prompt → LLM
 │   │
 │   ├── writer/                    # —— 模块 2：智能写作 ——
-│   │   ├── prompts.py             # 写作 prompt 模板（邮件/周报/营销/演讲）
-│   │   └── chain.py               # 写作链：输入字段 → prompt → LLM
-│   │                              # （不查向量库，纯 LLM 生成）
-│   │
+│   ├── summarizer/                # —— 模块 3：文档摘要 ——
+│   ├── translator/                # —— 模块 4：智能翻译 ——
+│   ├── coder/                     # —— 模块 5：AI 代码助手 ——
+│   ├── insight/                   # —— 模块 6：数据洞察（带 seed_db + sql_generator + chart_picker） ——
+│   ├── hr/                        # —— 模块 7：HR 助手 ——
+│   ├── designer/                  # —— 模块 8：AI 设计助手 ——
+│   ├── meeting/                   # —— 模块 9：会议助手 ——
+│   ├── workflow/                  # —— 模块 10：可视化工作流（LangGraph） ——
+│   ├── email/                     # —— SMTP 发邮件 ——
+│   └── feishu/                    # —— 飞书多维表格 Bitable ——
+│
 │   └── models/
 │       └── schemas.py             # Pydantic 模型（请求/响应）
 │
 ├── data/
 │   ├── uploads/                   # 上传的原始文件
-│   └── faiss_index/               # FAISS 持久化索引
+│   ├── faiss_index/               # FAISS 持久化索引
+│   └── insight_demo.db            # 数据洞察演示 SQLite（启动自动建表+灌种子）
 ├── tests/
-│   ├── test_basic.py              # 单元测试
-│   └── test_rag_e2e.py            # 端到端 RAG 验证
-├── tools/
-│   └── dump_vector_db.py          # 调试：导出 FAISS 内容
+│   └── test_basic.py
+├── tmp/
+│   ├── smoke_email.py             # 本地 mock SMTP 冒烟测试
+│   └── smoke_feishu.py            # 本地 mock 飞书 OpenAPI 冒烟测试
 ├── .env.example
 ├── requirements.txt
 └── README.md
@@ -241,10 +333,11 @@ aiwork-backend/
 
 ## 路线图
 
-- [x] D1 后端骨架（当前）
-- [ ] D2 前端接入 - 把 AiWork 应用市场"智能问答"卡片接上
-- [ ] D4 体验打磨 - 对话历史、引用高亮、多文档管理
-- [ ] D5 评测 + 部署
+- [x] 11 个 AI 应用模块 + 邮件 + 飞书集成
+- [x] 前端 Vue 应用市场接入（10 个卡片 + 侧边栏）
+- [ ] 多轮对话持久化（半天）
+- [ ] OCR 图片转文字（半天）
+- [ ] 企业邮共享账号（部署给客户时免授权码）
 
 ## 常见问题
 
@@ -266,3 +359,33 @@ A: 不同模型的向量维度不同，必须**删掉旧 FAISS 索引**重新入
 rm -rf data/faiss_index/
 ```
 然后重新上传文档。
+
+**Q: 怎么配 SMTP 让"📧 发邮件"按钮变可点？**
+A: 在 `.env` 里填：
+```ini
+SMTP_HOST=smtp.qq.com            # QQ 邮箱
+SMTP_PORT=465                     # 465 SSL 或 587 STARTTLS
+SMTP_USER=你的QQ@qq.com
+SMTP_PASSWORD=16位授权码          # 不是 QQ 密码!去邮箱后台开 SMTP 服务生成
+SMTP_FROM_NAME=AiWork 助手
+```
+**重点**：`SMTP_PASSWORD` 是授权码（去邮箱后台生成），不是登录密码。改完重启后端。
+
+**Q: 怎么配飞书多维表格让"📊 导入飞书任务"按钮变可点？**
+A: 三步：
+1. 去 https://open.feishu.cn/ 创建"企业自建应用"，开通 `bitable:app` 权限，拿到 App ID + App Secret
+2. 去 https://feishu.cn/base 创建多维表格，从 URL 截取 `app_token` 和 `table_id`
+3. 在 `.env` 里填：
+```ini
+FEISHU_APP_ID=cli_xxxxxxxx
+FEISHU_APP_SECRET=xxxxxxxx
+FEISHU_BITABLE_APP_TOKEN=xxxxxxxxxxxxx
+FEISHU_BITABLE_TABLE_ID=tblxxxxxxxx
+```
+重启后端。注意：你的多维表格必须有"标题" "责任人" "截止日期" "优先级" 这 4 个字段（或类似名字），否则推送会 400。字段类型说明见 `app/api/feishu.py` 顶部注释。
+
+**Q: LLM 提示 "Input to ChatPromptTemplate is missing variables"？**
+A: prompt 里有 `{xxx}` 被 LangChain 当成了变量。**JSON 示例里的 `{` 必须转义成 `{{`**,比如 `{"title": "..."}` → `{{"title": "..."}}`。
+
+**Q: 飞书 API 报 1254000/1254045 错误码？**
+A: 字段类型不匹配。`Date` 字段要传毫秒时间戳（`{value: 1700000000000}`），不能传字符串；`SingleSelect` 要传 option 的 key；`Person` 要传 `[{id: "ou_xxx"}]`。先调 `/api/feishu/tables/{tid}/fields` 看字段 schema。
