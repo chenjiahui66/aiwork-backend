@@ -151,3 +151,29 @@ class HrRequest(BaseModel):
     """
     task: Literal["jd", "resume_screen", "onboarding"] = Field(..., description="任务")
     inputs: dict = Field(..., description="任务参数")
+
+
+# ===== 设计助手相关 =====
+
+class DesignRequest(BaseModel):
+    """设计助手请求 — 生成可粘贴到 Midjourney/DALL-E 等工具的 prompt"""
+    design_type: Literal["poster", "banner", "logo", "illustration", "social", "ppt"] = Field(
+        ..., description="设计类型"
+    )
+    subject: str = Field(..., min_length=1, max_length=500, description="主题/产品")
+    style: str | None = Field(None, description="风格偏好")
+    color: str | None = Field(None, description="主色调")
+    scene: str | None = Field(None, description="使用场景")
+    extra: str | None = Field(None, description="额外要求")
+
+
+# ===== 会议助手相关 =====
+
+class MeetingRequest(BaseModel):
+    """会议内容处理请求
+
+    task: minutes(纪要) / todo(待办) / summary(摘要)
+    transcript: 会议转写文本(浏览器 ASR 实时输出 或用户粘贴/上传)
+    """
+    task: Literal["minutes", "todo", "summary"] = Field(..., description="任务")
+    transcript: str = Field(..., min_length=10, description="会议转写文本")
