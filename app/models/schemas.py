@@ -137,3 +137,17 @@ class CodeRequest(BaseModel):
 class InsightQueryRequest(BaseModel):
     """自然语言查询请求"""
     question: str = Field(..., min_length=2, max_length=500, description="业务问题")
+
+
+# ===== HR 助手相关 =====
+
+class HrRequest(BaseModel):
+    """HR 助手请求
+
+    inputs 字段根据 task 不同:
+    - jd:           {position, industry, requirements, location, experience}
+    - resume_screen: {jd_excerpt, resume_text}
+    - onboarding:   {employee_name, start_date, position, department, manager, company}
+    """
+    task: Literal["jd", "resume_screen", "onboarding"] = Field(..., description="任务")
+    inputs: dict = Field(..., description="任务参数")

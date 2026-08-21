@@ -6,7 +6,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, coder, insight, summarizer, translator, upload, writer
+from app.api import chat, coder, hr, insight, summarizer, translator, upload, writer
 from app.core.config import settings
 from app.models.schemas import HealthResponse
 
@@ -40,6 +40,7 @@ app.include_router(summarizer.router)
 app.include_router(translator.router)
 app.include_router(coder.router)
 app.include_router(insight.router)
+app.include_router(hr.router)
 
 
 @app.get("/")
