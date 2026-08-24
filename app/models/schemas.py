@@ -284,3 +284,95 @@ class FeishuParseTodosResponse(BaseModel):
     """解析待办响应"""
     todos: list[FeishuParsedTodo]
     raw: str = Field("", description="LLM 原始输出 — 调试用")
+
+
+# ===== GEO 内容智能体 =====
+
+class GEORequest(BaseModel):
+    """GEO 内容生成请求"""
+    title: str = Field(..., min_length=2, max_length=200, description="选题标题")
+    platform: Literal["wechat", "xiaohongshu", "douyin", "zhihu", "toutiao"] = Field(
+        "wechat", description="目标内容平台"
+    )
+    style: Literal["professional", "personal_ip", "viral_analysis", "story", "opinion", "tutorial"] = Field(
+        "professional", description="内容风格"
+    )
+
+
+class GEOResearch(BaseModel):
+    """选题研究报告"""
+    hotspots: list[str] = Field(default_factory=list)
+    faqs: list[str] = Field(default_factory=list)
+    gaps: list[str] = Field(default_factory=list)
+    opportunities: list[str] = Field(default_factory=list)
+    entities: dict = Field(default_factory=dict)
+
+
+class GEOArticle(BaseModel):
+    """生成的文章"""
+    title: str
+    content: str
+    word_count: int = 0
+
+
+class GEODimension(BaseModel):
+    """GEO 评分维度"""
+    name: str
+    key: str
+    score: int
+    comment: str = ""
+
+
+class GEOSearchTest(BaseModel):
+    """AI 搜索模拟"""
+    question: str
+    likelihood: Literal["high", "medium", "low"]
+    reason: str = ""
+
+
+class GEOScore(BaseModel):
+    """GEO 评分"""
+    total_score: int
+    dimensions: list[GEODimension] = Field(default_factory=list)
+    strengths: list[str] = Field(default_factory=list)
+    weaknesses: list[str] = Field(default_factory=list)
+    suggestions: list[str] = Field(default_factory=list)
+    ai_search_test: list[GEOSearchTest] = Field(default_factory=list)
+
+
+class GEOImagePrompt(BaseModel):
+    """一张配图的 prompt"""
+    section: str
+    info: str = ""
+    prompt: str
+
+
+class GEOImagePack(BaseModel):
+    """配图 prompt 包"""
+    cover_prompt: str
+    illustration_prompts: list[GEOImagePrompt] = Field(default_factory=list)
+
+
+class GEOPlatformPack(BaseModel):
+    """多平台发布包"""
+    wechat: dict = Field(default_factory=dict)
+    xiaohongshu: dict = Field(default_factory=dict)
+    douyin: dict = Field(default_factory=dict)
+
+
+class GEOResponse(BaseModel):
+    """GEO 完整响应"""
+    research: GEOResearch
+    article: GEOArticle
+    geo_score: GEOScore
+    images: GEOImagePack
+    platform_pack: GEOPlatformPack
+
+
+class GEOHealthResponse(BaseModel):
+    """健康检查"""
+    status: str = "ok"
+    module: str = "geo"
+    prompts_loaded: int = 8
+    llm_available: bool = True
+    web_search_enabled: bool = False  # 当前版本不接 Web 搜索

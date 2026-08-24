@@ -20,6 +20,7 @@
 | 🔗 可视化工作流 | `/api/workflow/*` | LangGraph StateGraph 多步流水线（4 模板） |
 | 📧 **SMTP 发邮件** | `/api/email/*` | 通用"发邮件"按钮（SMTP 协议，零新依赖） |
 | 📊 **飞书多维表格** | `/api/feishu/*` | 一键导入会议任务到飞书 Bitable |
+| 🚀 **GEO 内容智能体** | `/api/geo/*` | 自媒体博主专用 · 标题→选题研究→文章→GEO 评分→多平台发布包 |
 
 > 新增模块原则：**一个能力一个文件夹**，不混。
 
@@ -63,6 +64,21 @@
 - 🧠 后端 LLM 二次解析会议文本 → 结构化待办 JSON
 - ✏️ 前端可手动编辑后再推送
 - 🔑 `tenant_access_token` 2 小时缓存 + 自动刷新
+
+### GEO 内容智能体能力
+
+> 定位：**AI 自媒体研究员 + GEO 内容编辑 + 视觉设计师**
+> 不是"AI 写作工具"，而是"内容生产 Agent"。
+> 输入选题 → 一键产出：研究报告 + 文章 + GEO 评分 + AI 搜索模拟 + 配图 Prompt + 3 平台发布包
+
+- 🔍 **选题研究**：自动产出热门方向 / 用户问题 / 内容缺口 / 机会 / 实体识别
+- 📐 **知识结构**：5-7 章节大纲 + FAQ + 行动建议（利于 AI 搜索引擎抓取）
+- ✍️ **文章生成**：实体统一指代 + Q-A 结构 + 事实可验证 + 平台适配
+- 🎨 **配图 Prompt**：封面 + 4 张配图的中文视觉描述 + 可直接复制到 MJ/SD 的英文 prompt（MiniMax 无图像模型，**不接出图 API**）
+- 📊 **GEO 评分**：0-100 总分 + 7 维度评分（实体/主题/问题/数据/结构/来源/可验证）
+- 🔮 **AI搜索模拟**：3-5 个相关问题的被引用可能性评估（高/中/低 + 理由）
+- 📱 **多平台改写**：微信公众号 / 小红书 / 抖音图文 三份专属发布包
+- ⚠️ **当前版本**：不接实时 Web 搜索（基于 LLM 知识截止日期前的内容），UI 会显示提示
 
 ## 技术栈
 
@@ -184,6 +200,31 @@ MINIMAX_API_KEY=sk-xxxxxxxxxxxxxx
 | POST | `/api/feishu/push-records` | 批量新增记录（最多 1000 条） |
 | POST | `/api/feishu/parse-todos` | LLM 把会议文本解析成结构化待办 JSON（SSE） |
 
+### GEO 内容智能体
+
+| Method | Path | 说明 |
+|--------|------|------|
+| POST | `/api/geo/generate` | 一键生成 GEO 内容包（SSE 流式进度 + final 全量结果） |
+| GET  | `/api/geo/health` | 检查 prompt 文件加载 + LLM 可用性 |
+
+**请求示例**：
+
+```bash
+curl -N -X POST http://localhost:8000/api/geo/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "2026 年普通人如何用 AI 做副业",
+    "platform": "wechat",
+    "style": "personal_ip"
+  }'
+```
+
+**响应事件流**：
+- `{"type": "step", "step": 1, "name": "选题研究", "status": "start"}` — 步骤开始
+- `{"type": "step", "step": 1, "name": "选题研究", "status": "done"}` — 步骤完成
+- `{"type": "final", "data": {...}}` — 最终全量结果（含 research/article/geo_score/images/platform_pack）
+- `{"type": "done"}` — 整个流程完成
+
 ### 示例：上传文档
 
 ```bash
@@ -272,6 +313,7 @@ aiwork-backend/
 │   │   ├── workflow.py            # /api/workflow/*             (工作流)
 │   │   ├── email.py               # /api/email/*                (SMTP)
 │   │   └── feishu.py              # /api/feishu/*               (飞书 Bitable)
+│   │   └── geo.py                 # /api/geo/*                 (GEO 内容智能体)
 │   │
 │   ├── core/                      # —— 共享基础设施，谁都能用 ——
 │   │   ├── config.py              # pydantic-settings 配置
@@ -294,6 +336,7 @@ aiwork-backend/
 │   ├── workflow/                  # —— 模块 10：可视化工作流（LangGraph） ——
 │   ├── email/                     # —— SMTP 发邮件 ——
 │   └── feishu/                    # —— 飞书多维表格 Bitable ——
+│   └── geo/                       # —— GEO 内容智能体 (12 步 Agent + 7 prompt 文件) ——
 │
 │   └── models/
 │       └── schemas.py             # Pydantic 模型（请求/响应）
@@ -307,6 +350,7 @@ aiwork-backend/
 ├── tmp/
 │   ├── smoke_email.py             # 本地 mock SMTP 冒烟测试
 │   └── smoke_feishu.py            # 本地 mock 飞书 OpenAPI 冒烟测试
+│   └── smoke_geo.py               # 本地 mock LLM 跑 GEO 12 步全流程
 ├── .env.example
 ├── requirements.txt
 └── README.md

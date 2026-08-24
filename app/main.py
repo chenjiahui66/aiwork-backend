@@ -6,7 +6,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, coder, designer, email, feishu, hr, insight, meeting, summarizer, translator, upload, workflow, writer
+from app.api import chat, coder, designer, email, feishu, geo, hr, insight, meeting, summarizer, translator, upload, workflow, writer
 from app.core.config import settings
 from app.models.schemas import HealthResponse
 
@@ -18,9 +18,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 app = FastAPI(
-    title="AiWork Backend - 智能问答 RAG",
-    version="0.1.0",
-    description="基于 LangChain + Chroma 的企业知识库问答服务",
+    title="AiWork Backend - GEO 内容智能体 + RAG",
+    version="0.2.0",
+    description="基于 LangChain + FAISS 的 GEO 内容创作平台 (12 模块 + GEO 第13模块)",
 )
 
 # CORS - 允许前端(Vue dev server 5175/生产域名)访问
@@ -46,6 +46,7 @@ app.include_router(meeting.router)
 app.include_router(workflow.router)
 app.include_router(email.router)
 app.include_router(feishu.router)
+app.include_router(geo.router)
 
 
 @app.get("/")
