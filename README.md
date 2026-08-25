@@ -433,3 +433,20 @@ A: prompt 里有 `{xxx}` 被 LangChain 当成了变量。**JSON 示例里的 `{`
 
 **Q: 飞书 API 报 1254000/1254045 错误码？**
 A: 字段类型不匹配。`Date` 字段要传毫秒时间戳（`{value: 1700000000000}`），不能传字符串；`SingleSelect` 要传 option 的 key；`Person` 要传 `[{id: "ou_xxx"}]`。先调 `/api/feishu/tables/{tid}/fields` 看字段 schema。
+
+
+实际盘点：13 个模块的"模式归属"
+#	模块	用的模式	实际怎么做的
+1	智能问答 RAG	Workflow	上传→切片→embedding→检索→LLM，5 步写死
+2	AI 写作助手	单次 LLM	一次 prompt 出结果，没有多步
+3	文档摘要	单次 LLM	同上
+4	智能翻译	单次 LLM	同上
+5	AI 代码助手	单次 LLM	同上
+6	数据洞察	Workflow	自然语言→SQL→执行→可视化→总结，5 步写死
+7	HR 助手	单次 LLM	同上
+8	AI 设计助手	单次 LLM	同上
+9	会议助手	Workflow	STT→分段→纪要→待办→摘要，5 步写死
+10	可视化工作流	Workflow (LangGraph)	StateGraph，唯一真用 LangGraph 的
+11	SMTP 发邮件	不是 LLM	SMTP 协议
+12	飞书多维表格	Workflow	解析→编辑→推送，3 步写死
+13	GEO 内容智能体	Workflow（冒充 Agent）	12 步写死在 orchestrator.py
