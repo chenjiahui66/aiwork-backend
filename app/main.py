@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import chat, coder, designer, email, feishu, geo, hr, insight, meeting, summarizer, translator, upload, workflow, writer
+from app.api import testcase
 from app.core.config import settings
 from app.models.schemas import HealthResponse
 
@@ -47,6 +48,7 @@ app.include_router(workflow.router)
 app.include_router(email.router)
 app.include_router(feishu.router)
 app.include_router(geo.router)
+app.include_router(testcase.router)
 
 
 @app.get("/")
