@@ -11,6 +11,9 @@
     # 不遵守 robots.txt（自己的站可以）
     python -m app.crawler.crawl https://www.example.com --depth 3 --no-robots
 
+    # SPA 站点用 Playwright 渲染
+    python -m app.crawler.crawl https://www.example.com --depth 2 --playwright
+
     # 限制最大页面数 + 调慢延迟
     python -m app.crawler.crawl https://www.example.com --depth 2 --max-pages 30 --delay 1.0 3.0
 
@@ -38,6 +41,10 @@ def build_parser() -> argparse.ArgumentParser:
                     default=[0.5, 1.5], help="请求间隔秒数范围（默认 0.5 1.5）")
     p.add_argument("--timeout", type=float, default=15.0, help="单次请求超时秒数（默认15）")
     p.add_argument("--no-robots", action="store_true", help="不遵守 robots.txt")
+    p.add_argument("--playwright", action="store_true",
+                    help="用 Playwright 渲染 SPA 页面（需先 pip install playwright && playwright install chromium）")
+    p.add_argument("--pw-wait", type=float, default=2.0,
+                    help="Playwright 等待 JS 渲染秒数（默认2）")
     p.add_argument("--output", "-o", default="", help="JSON 结果输出路径")
     p.add_argument("--verbose", "-v", action="store_true", help="显示 DEBUG 日志")
     return p
@@ -67,6 +74,8 @@ def main(argv: list[str] | None = None) -> None:
         timeout=args.timeout,
         respect_robots=not args.no_robots,
         output_path=args.output,
+        use_playwright=args.playwright,
+        pw_wait_seconds=args.pw_wait,
     )
 
     crawler = Crawler(config)

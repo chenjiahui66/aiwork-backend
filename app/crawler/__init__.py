@@ -3,4 +3,19 @@
 
 用法:
     python -m app.crawler.crawl https://www.example.com --depth 2 --output results.json
+
+核心 API:
+    from app.crawler import Crawler, CrawlConfig
+    result = Crawler(CrawlConfig(start_url="https://www.example.com")).run()
 """
+from app.crawler.crawler import CrawlConfig, CrawlResult, Crawler
+from app.crawler.parsers import ParsedPage, extract_internal_links, parse_html
+
+__all__ = [
+    "Crawler",
+    "CrawlConfig",
+    "CrawlResult",
+    "ParsedPage",
+    "parse_html",
+    "extract_internal_links",
+]

@@ -103,14 +103,17 @@ def parse_html(html: str, base_url: str) -> ParsedPage:
     # ---- 正文 ----
     # 优先找 <main>/<article>，否则 fallback 到 <body>
     main_area = soup.find("main") or soup.find("article") or soup.body or soup
-    # 去掉 script/style/nav/footer
-    for tag_name in ("script", "style", "nav", "footer", "header", "aside", "form"):
+    # 只清 script/style 等非内容标签。
+    # 注意：不能清 header/nav/footer —— 很多 SPA（如 Vite 构建）没有 <main>，
+    # 内容全在 <div id="app"> 里，清掉这些标签会把正文和链接一起删光。
+    for tag_name in ("script", "style", "noscript", "template"):
         for t in main_area.find_all(tag_name):
             t.decompose()
     page.body_text = _normalize_whitespace(main_area.get_text())
     page.word_count = len(page.body_text.split())
 
     # ---- 链接 ----
+    # 从整个文档提取（main_area 可能已被清理，但链接不该因此丢失）
     for a in soup.find_all("a", href=True):
         href = str(a["href"])
         # 跳过锚点 / javascript:

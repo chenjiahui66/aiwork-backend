@@ -34,6 +34,7 @@ python-dotenv>=1.0.0
 # Web scraping (爬虫模块)
 beautifulsoup4>=4.12.0
 lxml>=5.0.0
+playwright>=1.40.0
 
 # Workflow - LangGraph for stateful multi-step pipelines
 langgraph>=1.0.0

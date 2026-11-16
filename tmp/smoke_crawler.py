@@ -77,8 +77,36 @@ def test_parse_html():
     print(f"  ✅ parse_html: title={page.title}, h1={page.headings.get('h1')}, words={page.word_count}")
 
 
+def test_no_main_tag_keeps_links():
+    """
+    测试 2: 无 <main> 标签的 SPA 页面，链接/正文不能被 decompose 误删
+
+    回归 bug：旧版 parser 会 decompose(header/nav/footer)，
+    导致没有 <main> 的页面（如 aindgc.com/tools）links=0、body_text 归零。
+    """
+    spa_html = """<!DOCTYPE html>
+<html><head><title>SPA 页</title></head>
+<body>
+  <div id="app">
+    <header class="app-header"><nav><a href="/">首页</a><a href="/tools">工具</a></nav></header>
+    <div class="content"><h1>SPA 标题</h1><p>真实正文内容</p><a href="/about">关于</a></div>
+    <footer class="app-footer"><a href="/privacy">隐私</a></footer>
+  </div>
+</body></html>"""
+
+    page = parse_html(spa_html, "https://www.example.com/tools")
+
+    assert len(page.links) >= 4, f"链接被误删, 只剩 {len(page.links)} 条: {page.links}"
+    hrefs = [l["href"] for l in page.links]
+    assert any("/privacy" in h for h in hrefs), f"页脚链接丢失: {hrefs}"
+    assert any("/about" in h for h in hrefs), f"正文链接丢失: {hrefs}"
+    assert "真实正文内容" in page.body_text, f"正文丢失: {page.body_text[:80]}"
+    assert page.word_count > 0
+    print(f"  ✅ 无 main 标签: links={len(page.links)} 条保留, words={page.word_count}")
+
+
 def test_extract_internal_links():
-    """测试 2: extract_internal_links 域名过滤"""
+    """测试 3: extract_internal_links 域名过滤"""
     page = parse_html(SAMPLE_HTML, "https://www.example.com/")
     internal = extract_internal_links(page, "www.example.com")
 
@@ -214,7 +242,7 @@ def test_depth_limit():
 
 
 def test_dedup():
-    """测试 10: URL 去重"""
+    """测试 11: URL 去重"""
     crawler = Crawler(CrawlConfig(start_url="https://www.example.com", max_depth=1))
     crawler._visited.add("https://www.example.com/")
     crawler._visited.add("https://www.example.com/about")
@@ -226,9 +254,38 @@ def test_dedup():
     print(f"  ✅ 去重: visited={len(crawler._visited)} 条")
 
 
+def test_renderer_config():
+    """测试 12: RendererConfig + 系统浏览器探测"""
+    from app.crawler.renderer import RendererConfig, _find_system_browser
+
+    cfg = RendererConfig()
+    assert cfg.headless is True
+    assert cfg.auto_scroll is True
+    assert cfg.wait_seconds > 0
+
+    # 系统浏览器探测（Windows 自带 Edge/Chrome 应该能找到）
+    found = {k: _find_system_browser(k) for k in ("chrome", "msedge")}
+    print(f"  ✅ RendererConfig: 系统浏览器 chrome={found['chrome'] is not None}, "
+          f"msedge={found['msedge'] is not None}")
+
+
+def test_playwright_flag():
+    """测试 13: CrawlConfig 的 playwright 相关字段"""
+    cfg = CrawlConfig(start_url="https://www.example.com")
+    assert cfg.use_playwright is False
+    assert cfg.pw_wait_seconds > 0
+
+    cfg2 = CrawlConfig(start_url="https://www.example.com",
+                       use_playwright=True, pw_wait_seconds=3.0)
+    assert cfg2.use_playwright is True
+    assert cfg2.pw_wait_seconds == 3.0
+    print("  ✅ CrawlConfig: use_playwright / pw_wait_seconds 正常")
+
+
 def run_all():
     tests = [
         ("parse_html 基本解析", test_parse_html),
+        ("无 main 标签页面链接保留", test_no_main_tag_keeps_links),
         ("extract_internal_links 域名过滤", test_extract_internal_links),
         ("CrawlConfig 默认值", test_crawl_config_defaults),
         ("ParsedPage.to_dict 序列化", test_parsed_page_to_dict),
@@ -237,6 +294,8 @@ def run_all():
         ("CLI 参数解析", test_cli_parser),
         ("深度限制", test_depth_limit),
         ("URL 去重", test_dedup),
+        ("RendererConfig + 系统浏览器探测", test_renderer_config),
+        ("CrawlConfig playwright 字段", test_playwright_flag),
     ]
 
     print("=" * 60)

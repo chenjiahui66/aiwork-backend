@@ -1,0 +1,1835 @@
+{
+  "start_url": "https://www.aindgc.com",
+  "max_depth": 1,
+  "max_pages": 15,
+  "pages_crawled": 15,
+  "pages_skipped": 0,
+  "errors": 0,
+  "total_time_seconds": 70.84,
+  "pages": [
+    {
+      "url": "https://www.aindgc.com",
+      "title": "Aindgc — AI Product Lab",
+      "meta_description": "Turn AI Into Work. 让 AI 真正开始工作。AI Workflow、Agent、ROI 计算器、AI Coding 项目、Skill 生成器 — 全部免费可用。",
+      "meta_keywords": "AI, AI Agent, AI Workflow, Claude Code, Codex, Cursor, ROI, AI Lab, Automation",
+      "headings": {
+        "h1": [
+          "Turn AI Into Work."
+        ],
+        "h2": [
+          "Six capabilities. One platform.",
+          "Tools that ship work.",
+          "From signal to outcome.",
+          "Where can AI actually work?",
+          "Discover your AI opportunity.",
+          "How AI-ready is your work?",
+          "Things I've built.",
+          "What I'm learning."
+        ],
+        "h3": [
+          "Agent Workflow Generator",
+          "Agent Skills Generator",
+          "AI ROI Calculator",
+          "AI Work Checkup",
+          "AI Context Builder",
+          "AI Coding Project Starter",
+          "What's your work worth?",
+          "AI Workbench — 把工作变成可执行的工作流",
+          "Agent Skills Marketplace (概念)",
+          "Multi-Agent Workflow PoC",
+          "AI Agent 和 AI Workflow,到底什么关系?",
+          "把 Claude Code 当作产品,而不是工具",
+          "真实的 AI ROI:不是替代,而是放大"
+        ],
+        "h4": [
+          "Sales",
+          "Customer Service",
+          "Marketing",
+          "Operations",
+          "Knowledge Base",
+          "Data Analysis",
+          "Internal Automation",
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AI Product Lab · est. 2026 Turn AI Into Work.让 AI 真正开始工作。 从一个想法,到一个可以执行的 AI 工作流。 Explore. Build. Automate. Explore AI ToolsStart BuildingNo signup · No credit card · Open architectureMInput?ReasoningAAgentTToolsWWorkflowRResultinteractive · hover any nodeAindgcAI ChatAI AgentAI WorkflowAI CodingAI AutomationAI Business输入目标和上下文,自动生成标准化的 AI Workflow 定义(JSON / Markdown)。输入角色与目标,生成符合规范的 Agent Skill,可直接投入生产。基于员工数、工资、重复工作时间,得到保守的 ROI 估算(标注 Simulation)。完成问卷得到 AI Readiness Score + Top 5 AI 自动化机会。用模板生成可复用的 Context 包,提升 AI 输出稳定性。为 Claude Code / Codex / Cursor 生成 AGENTS.md + 完整目录结构。01Lead销售线索02Analyze信息分析03JudgeAI 判断04Grade客户分级05Draft自动生成06CRM写入系统See Workflow Examples Sales线索分级 · 自动跟进Customer Service工单分类 · 自动回复Marketing内容生成 · 受众分析Operations流程自动化 · 报表Knowledge Base知识检索 · 内部问答Data Analysis指标解读 · 异常检测Internal Automation重复任务 · 自动化Try it · SimulationWhat's your work worth?Employees 20Avg. monthly salary ¥12,000Repeatable hours / week 15hEstimated impactEstimated annual saving ¥0Across 20 employees · based on 15600h/yr of repeatable workCurrent annual cost¥0Automation potential0%All values are estimates for simulation. Real impact depends on workflow design and adoption.Discover your AI opportunity →Step 1 of 6Which industry are you in?A Sales & MarketingB Customer ServiceC Software DevelopmentD Operations & HRSample resultAI Readiness Score72/100Top 5 AI opportunities01Meeting SummaryHigh02Customer Follow-upHigh03Weekly ReportMedium04Knowledge SearchMedium05Lead QualificationHighStart your AI Checkup →Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST 的完整工作包。Vue 3Rule EngineJSON SchemaConcept为 Claude Code / Codex / Cursor 构建可发现、可版本化的 SKILL.md 市场。Claude CodeMCPMarketplacePrototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentDifyAAI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。6 min · 2026-09把AI Coding把 Claude Code 当作产品,而不是工具8 min · 2026-09真AI Business真实的 AI ROI:不是替代,而是放大7 min · 2026-08",
+      "links_count": 35,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "Explore AI Tools"
+        },
+        {
+          "href": "https://www.aindgc.com/workbench",
+          "text": "Start Building"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/agent-workflow-generator",
+          "text": "输入目标和上下文,自动生成标准化的 AI Workflow 定义(JSON / Markdown)。"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/agent-skills-generator",
+          "text": "输入角色与目标,生成符合规范的 Agent Skill,可直接投入生产。"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "基于员工数、工资、重复工作时间,得到保守的 ROI 估算(标注 Simulation)。"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "完成问卷得到 AI Readiness Score + Top 5 AI 自动化机会。"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/context-builder",
+          "text": "用模板生成可复用的 Context 包,提升 AI 输出稳定性。"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/coding-project-starter",
+          "text": "为 Claude Code / Codex / Cursor 生成 AGENTS.md + 完整目录结构。"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "See Workflow Examples"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "Discover your AI opportunity →"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "Start your AI Checkup →"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/ai-workbench",
+          "text": "Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST 的完整工作包。Vue 3Rule EngineJSON Schema"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/agent-skills-marketplace-concept",
+          "text": "Concept为 Claude Code / Codex / Cursor 构建可发现、可版本化的 SKILL.md 市场。Claude CodeMCPMarketplace"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/multi-agent-workflow-poc",
+          "text": "Prototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentDify"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/ai-agent-vs-workflow",
+          "text": "AAI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。6 min · 2026-09"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/claude-code-as-product",
+          "text": "把AI Coding把 Claude Code 当作产品,而不是工具8 min · 2026-09"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/real-ai-roi",
+          "text": "真AI Business真实的 AI ROI:不是替代,而是放大7 min · 2026-08"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Aindgc — Turn AI Into Work",
+        "og:description": "把 AI 真正变成可以执行的工作。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Aindgc — Turn AI Into Work",
+        "twitter:description": "把 AI 真正变成可以执行的工作。"
+      },
+      "word_count": 234
+    },
+    {
+      "url": "https://www.aindgc.com/tools",
+      "title": "AI Tools — Aindgc",
+      "meta_description": "把 AI 真正变成可以执行的工作。AI 工作流生成器、Agent Skills 生成器、Context Builder、AI Coding 启动器、Prompt 结构化工具、Output Schema 生成器。",
+      "meta_keywords": "AI Tools, Agent Workflow Generator, Agent Skills, Context Builder, AI Coding Starter, Prompt Builder, Output Schema",
+      "headings": {
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "",
+      "links_count": 0,
+      "links": [],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "AI Tools — Aindgc",
+        "og:description": "把 AI 真正变成可以执行的工作。AI 工作流生成器、Agent Skills 生成器、Context Builder、AI Coding 启动器、Prompt 结构化工具、Output Schema 生成器。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "AI Tools — Aindgc",
+        "twitter:description": "把 AI 真正变成可以执行的工作。AI 工作流生成器、Agent Skills 生成器、Context Builder、AI Coding 启动器、Prompt 结构化工具、Output Schema 生成器。"
+      },
+      "word_count": 0
+    },
+    {
+      "url": "https://www.aindgc.com/workbench",
+      "title": "页面未找到 — Aindgc",
+      "meta_description": "Aindgc — AI Product Lab. Turn AI into work. AI 工作流、Agent、Workflow、ROI 计算、AI 项目作品集。",
+      "meta_keywords": "AI, AI Agent, AI Workflow, AI Coding, Claude Code, Codex, Cursor, AI Lab",
+      "headings": {
+        "h1": [
+          "Page not found"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "404Page not found这条路径不存在 — 可能还在路上,也可能走丢了。Back to home",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Aindgc — AI Product Lab",
+        "og:description": "Turn AI Into Work. 让 AI 真正开始工作。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Aindgc — AI Product Lab"
+      },
+      "word_count": 7
+    },
+    {
+      "url": "https://www.aindgc.com/workflow",
+      "title": "AI Workflow Builder — Aindgc",
+      "meta_description": "可视化构建 AI 工作流。Trigger / AI / Condition / Tool / Action / Output 节点,拖拽编辑,导出 Markdown 和 JSON。",
+      "meta_keywords": "AI Workflow Builder, Vue Flow, Multi-Agent, Automation, AI Agent Workflow",
+      "headings": {
+        "h1": [
+          "Visualize your AI workflow."
+        ],
+        "h2": [
+          "Templates",
+          "My workflows"
+        ],
+        "h3": [
+          "Sales Lead Triage",
+          "Content Pipeline",
+          "Support Ticket Router",
+          "No saved workflows yet"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "Sales Lead Triage从 CRM 拉取新线索,AI 评分,自动分级并写回 CRM。 7 nodes 8 edges Trigger Use this template Content Pipeline从选题到发布的完整 AI 内容流水线。 7 nodes 8 edges Trigger Use this template Support Ticket Router客服工单自动分类、紧急度评估、分配坐席。 8 nodes 10 edges Trigger Use this template No saved workflows yetBuild something in the canvas and click Save. New",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "AI Workflow Builder — Aindgc",
+        "og:description": "可视化构建 AI 工作流。Trigger / AI / Condition / Tool / Action / Output 节点,拖拽编辑,导出 Markdown 和 JSON。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "AI Workflow Builder — Aindgc",
+        "twitter:description": "可视化构建 AI 工作流。Trigger / AI / Condition / Tool / Action / Output 节点,拖拽编辑,导出 Markdown 和 JSON。"
+      },
+      "word_count": 50
+    },
+    {
+      "url": "https://www.aindgc.com/roi",
+      "title": "AI ROI Calculator — Aindgc",
+      "meta_description": "免费 AI ROI 计算器:输入员工数、工资、重复工作时间,得到估算的 AI 自动化潜力与年度节省。所有结果标注 Simulation。",
+      "meta_keywords": "AI ROI Calculator, AI Automation, ROI Estimation, AI Cost Saving",
+      "headings": {
+        "h1": [
+          "AI ROI Calculator."
+        ],
+        "h3": [
+          "Your inputs"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "IndustryChoose (optional)Employees 20Avg. monthly salary ¥12,000Repeatable hours / week 15hCustomer requests / monthSales leads / month AI automation rate 40%conservative default 40% Reset to defaults 0 Across 20 employees · based on 15,600h/yr of repeatable work. Current annual cost0salary across 20 employeesRepeatable cost / yr015,600h × ¥75/hAutomation potential0%typical ceiling for repeatable tasksCustomer request handling0 h / month500 requests × 12 minSales lead handling0 h / month300 leads × 15 minAssumptions usedWorking hours per year: 2080h (40h × 52w)Hourly cost: ¥75 (salary / 160h)Avg customer request handling: 12 minAI automation rate applied: 40% Estimated · Simulation. All values are illustrative. Real impact depends on workflow design, data quality, and adoption. Use as a starting point for planning, not as a financial projection. Download report (JSON) Share this result",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "AI ROI Calculator — Estimate your AI opportunity",
+        "og:description": "基于员工数、工资、重复工作时间,得到保守的 AI ROI 估算。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "AI ROI Calculator — Estimate your AI opportunity",
+        "twitter:description": "基于员工数、工资、重复工作时间,得到保守的 AI ROI 估算。"
+      },
+      "word_count": 127
+    },
+    {
+      "url": "https://www.aindgc.com/checkup",
+      "title": "AI Work Checkup — Aindgc",
+      "meta_description": "免费 AI 准备度评估:6 步问卷 → AI Readiness Score + Top 5 自动化机会。",
+      "meta_keywords": "AI Checkup, AI Readiness, AI Maturity, Automation Opportunities",
+      "headings": {
+        "h1": [
+          "How AI-ready is your work?"
+        ],
+        "h3": [
+          "What you'll get"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "What you'll get 一个 0-100 的 AI Readiness Score 5 个按相关度排序的自动化机会 每道题的得分细节 完全本地,数据不上传",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "AI Work Checkup — Aindgc",
+        "og:description": "免费 AI 准备度评估:6 步问卷 → AI Readiness Score + Top 5 自动化机会。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "AI Work Checkup — Aindgc",
+        "twitter:description": "免费 AI 准备度评估:6 步问卷 → AI Readiness Score + Top 5 自动化机会。"
+      },
+      "word_count": 13
+    },
+    {
+      "url": "https://www.aindgc.com/skills",
+      "title": "Skills Marketplace — Aindgc",
+      "meta_description": "Curated SKILL.md packs for Claude Code / Codex / Cursor / Gemini CLI. Coding, writing, research, ops, productivity, support — copy and install.",
+      "meta_keywords": "Claude Code Skills, Codex Skills, Cursor Skills, SKILL.md, Agent Skills, AI Coding",
+      "headings": {
+        "h1": [
+          "Curated SKILL.md packs"
+        ],
+        "h2": [
+          "Need a skill we don't have?"
+        ],
+        "h3": [
+          "Code Reviewer",
+          "Unit Test Writer",
+          "Refactor Planner",
+          "Technical Writer",
+          "Commit Message Writer",
+          "Paper Summarizer",
+          "Competitor Scout",
+          "Incident Responder",
+          "SQL Query Helper",
+          "Meeting Summarizer",
+          "Inbox Triage",
+          "Support Responder"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "All12Coding3Writing2Research2Operations2Productivity2Support1All categoriesCode ReviewerCatch bugs, style issues, and security smells before merge.Senior code reviewer focused on correctness, readability, security.Claude Code · Codex CLI · Cursor1,840 installsUnit Test WriterAdd meaningful unit tests without bloating the suite.Test-writing agent that maps behavior to assertion.Claude Code · Codex CLI1,210 installsRefactor PlannerPlan a refactor as a sequence of mechanical, testable steps.Refactoring architect that proposes safe, reversible steps.Claude Code · Cursor642 installsTechnical WriterReorganize, tighten, and add the missing section.Editor that turns rough drafts into clear, structured docs.Claude Code · Cursor1,580 installsCommit Message WriterTurn a diff into a precise commit subject + body.Writer of conventional, single-line commit messages.Claude Code · Codex CLI2,640 installsPaper SummarizerTurn a 20-page paper into a 1-page structured summary.Reader that compresses long papers into structured summaries.Claude Code · Gemini CLI920 installsCompetitor ScoutMap the competitive landscape for a product area.Researcher mapping competitors in a niche.Claude Code · Cursor730 installsIncident ResponderTriage, gather context, propose — never auto-execute.On-call assistant for production incidents.Claude Code510 installsSQL Query HelperTranslate a business question into a query, plus the EXPLAIN plan.SQL writer that turns a question into a query, with EXPLAIN.Claude Code · Codex CLI1,430 installsMeeting SummarizerFrom 60 minutes of transcript to 6 bullets and 3 action items.Takes a meeting transcript and produces an action list.Claude Code · Cursor · Gemini CLI980 installsInbox TriageRead inbox once, get a 2-minute triage plan.Email triager that produces a short action plan.Claude Code · Cursor670 installsSupport ResponderDraft a reply in the right tone, with the right links.First-line support that drafts polite, on-brand replies.Claude Code · Cursor820 installsNe",
+      "links_count": 19,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/agent-skills-generator",
+          "text": "Open Agent Skills Generator"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Skills Marketplace — Aindgc",
+        "og:description": "Curated SKILL.md packs for Claude Code / Codex / Cursor / Gemini CLI. Coding, writing, research, ops, productivity, support — copy and install.",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Skills Marketplace — Aindgc",
+        "twitter:description": "Curated SKILL.md packs for Claude Code / Codex / Cursor / Gemini CLI. Coding, writing, research, ops, productivity, support — copy and install."
+      },
+      "word_count": 281
+    },
+    {
+      "url": "https://www.aindgc.com/coding",
+      "title": "Coding Templates — Aindgc",
+      "meta_description": "Curated AI coding project starters for Vue / React / Spring Boot / FastAPI / Next.js / Flutter. With AGENTS.md, file tree, key files, install & run.",
+      "meta_keywords": "AI Coding Templates, Vue 3 Starter, Spring Boot Starter, FastAPI Template, Next.js Boilerplate, Flutter Starter",
+      "headings": {
+        "h1": [
+          "Production-ready project starters"
+        ],
+        "h2": [
+          "Stack not in the catalog?"
+        ],
+        "h3": [
+          "Vue 3 + Vite + TypeScript",
+          "React 18 + Vite + TS",
+          "Spring Boot 3 + Java 17",
+          "FastAPI + Python 3.11",
+          "Node.js + Express + TS",
+          "Next.js 14 App Router + TS",
+          "Nginx Reverse Proxy + HTTPS",
+          "Flutter + Riverpod"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "All8Frontend2Backend3Full-stack1DevOps1Mobile1All categoriesVue 3 + Vite + TypeScriptVue 3.4 / Vite 5 / TS 5Editorial SPA starter with design tokens and Pinia.13 files2,150 installsReact 18 + Vite + TSReact 18 / Vite 5 / TS 5Lean React starter — no router, no UI lib, just hooks + Zustand.13 files1,880 installsSpring Boot 3 + Java 17Spring Boot 3.2 / Java 17 / MyBatis-PlusProduction-ready REST API with JWT auth, MySQL, and Swagger.11 files2,420 installsFastAPI + Python 3.11FastAPI 0.110 / Python 3.11 / SQLAlchemy 2Async REST API with JWT auth, SQLAlchemy 2.0, and Alembic.14 files1,640 installsNode.js + Express + TSExpress 4 / Node 20 / TS 5Minimal Express REST API with JWT auth and Prisma.13 files1,320 installsNext.js 14 App Router + TSNext.js 14 / React 18 / PrismaApp Router with server actions, route handlers, and Prisma.14 files1,980 installsNginx Reverse Proxy + HTTPSNginx + Let's EncryptHTTPS reverse proxy with certbot, HSTS, and gzip.7 files970 installsFlutter + RiverpodFlutter 3.16 / Dart 3.2Cross-platform mobile starter with Riverpod 2 and go_router.10 files720 installsStack not in the catalog? The AI Coding Project Starter generates a multi-file bundle — README.md, AGENTS.md, ARCHITECTURE.md, CONTRIBUTING.md — for any stack combination. Free, instant, downloadable as ZIP. Open Coding Project Starter",
+      "links_count": 19,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/tools/coding-project-starter",
+          "text": "Open Coding Project Starter"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Coding Templates — Aindgc",
+        "og:description": "Curated AI coding project starters for Vue / React / Spring Boot / FastAPI / Next.js / Flutter. With AGENTS.md, file tree, key files, install & run.",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Coding Templates — Aindgc",
+        "twitter:description": "Curated AI coding project starters for Vue / React / Spring Boot / FastAPI / Next.js / Flutter. With AGENTS.md, file tree, key files, install & run."
+      },
+      "word_count": 197
+    },
+    {
+      "url": "https://www.aindgc.com/cases",
+      "title": "Cases — Aindgc",
+      "meta_description": "Aindgc 的 AI 项目案例集:真实项目、原型、实验、概念。Problem / Approach / Architecture / Implementation / Result / What I Learned 全透明。",
+      "meta_keywords": "AI Cases, AI Projects, AI Product Portfolio, AI Workflow Case Study",
+      "headings": {
+        "h1": [
+          "Things I've built."
+        ],
+        "h2": [
+          "Featured"
+        ],
+        "h3": [
+          "Aindgc Workbench — 把工作翻译成可执行的 AI 工作流",
+          "AI Coding 实际能提升多少生产力?",
+          "Multi-Agent Workflow PoC — 6 节点协作流",
+          "Aindgc Workbench — 把工作翻译成可执行的 AI 工作流",
+          "AI Coding 实际能提升多少生产力?",
+          "Multi-Agent Workflow PoC — 6 节点协作流",
+          "Agent Skills Marketplace(概念)"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST / SKILL 的完整工作包。Vue 3TypeScriptPiniaViteRule EngineExperiment用 Claude Code + Codex 跑同一组任务,记录实际提升。Claude CodeCodexGitPrototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentClaude APICategoryAllProductAgentWorkflowExperimentTypeAll TypesReal ProjectPrototypeExperimentConcept 4 of 4 cases Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST / SKILL 的完整工作包。Vue 3TypeScriptPiniaViteRule EngineExperiment用 Claude Code + Codex 跑同一组任务,记录实际提升。Claude CodeCodexGitPrototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentClaude APIConcept为 Claude Code / Codex / Cursor / Gemini CLI 构建可发现、可版本化的 SKILL.md 市场。MCPGitMarkdownYAML Frontmatter",
+      "links_count": 25,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/aindgc-workbench",
+          "text": "Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST / SKILL 的完整工作包。Vue 3TypeScriptPini"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/ai-coding-workflow-experiment",
+          "text": "Experiment用 Claude Code + Codex 跑同一组任务,记录实际提升。Claude CodeCodexGit"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/multi-agent-workflow-poc",
+          "text": "Prototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentClaude API"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/aindgc-workbench",
+          "text": "Real Project把\"我想让 AI 帮我做 X\"翻译成 ROLE / TASK / WORKFLOW / CHECKLIST / SKILL 的完整工作包。Vue 3TypeScriptPini"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/ai-coding-workflow-experiment",
+          "text": "Experiment用 Claude Code + Codex 跑同一组任务,记录实际提升。Claude CodeCodexGit"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/multi-agent-workflow-poc",
+          "text": "Prototype在 Vue Flow 上构建一个 6 节点的多 Agent 协作流,验证可视化 + JSON 导出。Vue FlowMulti-AgentClaude API"
+        },
+        {
+          "href": "https://www.aindgc.com/cases/agent-skills-marketplace-concept",
+          "text": "Concept为 Claude Code / Codex / Cursor / Gemini CLI 构建可发现、可版本化的 SKILL.md 市场。MCPGitMarkdownYAML Frontm"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Cases — Aindgc",
+        "og:description": "Aindgc 的 AI 项目案例集:真实项目、原型、实验、概念。Problem / Approach / Architecture / Implementation / Result / What I Learned 全透明。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Cases — Aindgc",
+        "twitter:description": "Aindgc 的 AI 项目案例集:真实项目、原型、实验、概念。Problem / Approach / Architecture / Implementation / Result / What I Learned 全透明。"
+      },
+      "word_count": 89
+    },
+    {
+      "url": "https://www.aindgc.com/insights",
+      "title": "Insights — Aindgc",
+      "meta_description": "AI 行业观察、思考、实验笔记。Agent、Workflow、Coding、Business、Productivity。",
+      "meta_keywords": "AI Insights, AI Blog, AI Agent, AI Workflow, AI Coding, AI Business",
+      "headings": {
+        "h1": [
+          "What I'm learning."
+        ],
+        "h2": [
+          "Featured"
+        ],
+        "h3": [
+          "AI Agent 和 AI Workflow,到底什么关系?",
+          "AI Agent 和 AI Workflow,到底什么关系?",
+          "把 Claude Code 当作产品,而不是工具",
+          "真实的 AI ROI:不是替代,而是放大",
+          "做 Workflow Builder 的 5 个设计教训",
+          "MCP:每个开发者都误解了的协议"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AAI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。1 min · 2026-09-22AllAI AgentAI WorkflowAI CodingAI BusinessProductivityTags:Claude CodeCodexCursorGemini CLIMCPMulti-AgentProductivityPrompt EngineeringROISalesSmall BusinessWorkflow 5 of 5 articles AAI AgentAI Agent 和 AI Workflow,到底什么关系?1 min · 2026-09-22把AI Coding把 Claude Code 当作产品,而不是工具2 min · 2026-09-18真AI Business真实的 AI ROI:不是替代,而是放大1 min · 2026-08-25做AI Workflow做 Workflow Builder 的 5 个设计教训1 min · 2026-09-28MAI AgentMCP:每个开发者都误解了的协议1 min · 2026-09-05",
+      "links_count": 24,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/ai-agent-vs-workflow",
+          "text": "AAI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。1 min · 2026-09-22"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/ai-agent-vs-workflow",
+          "text": "AAI AgentAI Agent 和 AI Workflow,到底什么关系?1 min · 2026-09-22"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/claude-code-as-product",
+          "text": "把AI Coding把 Claude Code 当作产品,而不是工具2 min · 2026-09-18"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/real-ai-roi",
+          "text": "真AI Business真实的 AI ROI:不是替代,而是放大1 min · 2026-08-25"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/workflow-builder-design-lessons",
+          "text": "做AI Workflow做 Workflow Builder 的 5 个设计教训1 min · 2026-09-28"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/mcp-the-protocol-everyone-misunderstands",
+          "text": "MAI AgentMCP:每个开发者都误解了的协议1 min · 2026-09-05"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Insights — Aindgc",
+        "og:description": "AI 行业观察、思考、实验笔记。Agent、Workflow、Coding、Business、Productivity。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Insights — Aindgc",
+        "twitter:description": "AI 行业观察、思考、实验笔记。Agent、Workflow、Coding、Business、Productivity。"
+      },
+      "word_count": 60
+    },
+    {
+      "url": "https://www.aindgc.com/about",
+      "title": "页面未找到 — Aindgc",
+      "meta_description": "Aindgc — AI Product Lab. Turn AI into work. AI 工作流、Agent、Workflow、ROI 计算、AI 项目作品集。",
+      "meta_keywords": "AI, AI Agent, AI Workflow, AI Coding, Claude Code, Codex, Cursor, AI Lab",
+      "headings": {
+        "h1": [
+          "Page not found"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "404Page not found这条路径不存在 — 可能还在路上,也可能走丢了。Back to home",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "website",
+        "og:title": "Aindgc — AI Product Lab",
+        "og:description": "Turn AI Into Work. 让 AI 真正开始工作。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Aindgc — AI Product Lab"
+      },
+      "word_count": 7
+    },
+    {
+      "url": "https://www.aindgc.com/insights/mcp-the-protocol-everyone-misunderstands",
+      "title": "MCP:每个开发者都误解了的协议 — Insights · Aindgc",
+      "meta_description": "为什么 MCP 不是简单的\"AI 工具标准化\",而是 Agent 时代的基础设施。",
+      "meta_keywords": "MCP, Multi-Agent",
+      "headings": {
+        "h1": [
+          "MCP:每个开发者都误解了的协议",
+          "MCP:每个开发者都误解了的协议"
+        ],
+        "h2": [
+          "大多数人对 MCP 的理解",
+          "MCP 真正解决的问题",
+          "一个类比",
+          "实际工作流",
+          "为什么这是 Agent 时代的关键",
+          "一些常被忽略的点",
+          "什么时候用 MCP",
+          "总结",
+          "Related insights"
+        ],
+        "h3": [
+          "1. MCP 不只是\"调用\"",
+          "2. MCP 是有状态协议",
+          "3. 安全模型还不成熟",
+          "AI Agent 和 AI Workflow,到底什么关系?"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AI Agent 2026-09-05 1 min read AindgcMCP:每个开发者都误解了的协议Model Context Protocol 不是\"AI 工具的统一 API\",它是 Agent 的文件系统。#Multi-Agent#MCPMCP:每个开发者都误解了的协议> MCP(Model Context Protocol) 不是\"AI 工具的统一 API\",它是 Agent 的文件系统。大多数人对 MCP 的理解\"哦,就是让 AI 能调所有工具的协议。跟 OpenAPI 差不多嘛。\"这是误解。MCP 真正解决的问题传统的工具调用(OpenAI function calling、Claude tool use): 每个工具需要单独定义 schema AI 必须\"知道\"工具的存在 工具更新需要重新训练 / 重新 prompt MCP 的设计: 工具自己注册到 MCP server AI 通过统一的协议发现和使用 工具更新不需要改 AI 一个类比把 MCP 想象成 USB: USB 之前:每个外设都有自己的接口(键盘、鼠标、打印机各有各的协议) USB 之后:一个接口,所有外设 MCP 对 AI 做的事,跟 USB 对计算机做的事是一样的。实际工作流┌─────────────────────────────────┐ │ Claude / Codex / Gemini │ │ (任何支持 MCP 的 AI) │ └─────────────────────────────────┘ ↓ MCP 协议 ┌─────────────────────────────────┐ │ MCP Host (Claude Desktop 等) │ └─────────────────────────────────┘ ↓ ┌─────────────────────────────────┐ │ MCP Servers: │ │ - filesystem │ │ - git │ │ - postgres │ │ - slack │ │ - 你公司内部的工具 │ └─────────────────────────────────┘ 为什么这是 Agent 时代的关键没有 MCP 之前: 每个 AI 厂商自己做工具集成(OpenAI plugins, Anthropic skills) 工具作者要适配 N 个 AI 平台 工具很难跨平台复用 有了 MCP: 工具作者只对接 MCP 一次 所有支持 MCP 的 AI 都能用 工具市场可能出现(MCP server marketplace) 一些常被忽略的点1. MCP 不只是\"调用\"MCP 还包括: Resources:AI 可以读的数据(文件、数据库行) Prompts:预定义的 prompt 模板 Tools:可调用的函数 这是把 AI 当成\"操作系统的进程\"在设计——不只是 RPC,还包括 IO 和配置。2. MCP 是有状态协议不像 OpenAPI 的无状态 HTTP,MCP 支持: 长连接 服务端推送 流式响应 这意味着 AI 可以\"订阅\"资源变化,而非每次都重新请求。3. 安全模型还不成熟MCP 1.0 没有强认证,也没有细粒度授权。如果你让 AI 通过 MCP 访问你的文件系统,你要信任: MCP server 的实现 AI 不会越权 网络传输是安全的 生产部署 MCP server 需要额外加一层安全网关(我们做 Aindgc 的时候吃过这个亏)。什么时候用 MCP适合: 你要集成多个 AI 平台 你的工具有很多上下文(数据库连接、长任务) 你想复用社区已有的 MCP servers(filesystem / git / postgres) 不适合: 你只用一个 AI(直接用 OpenAI function calling) 你的工具很简单(直接 HTTP 调用就好) 你需要极低延迟(MCP 的开销) 总结 MCP 不是\"统一 API\",是 Agent 时代的 USB 它定义的是 AI 与外部世界的完整交互模型(工具、资源、prompt、状态) 工具作者对接 MCP 一次,所有 AI 都能用 安全模型还不成熟,生产部署要小心 不是所有场景都适合,简单的工具调用用 OpenAPI 就够了AI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。7 min · 2026-09-22",
+      "links_count": 19,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/ai-agent-vs-workflow",
+          "text": "AI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。7 min · 2026-09-22"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "article",
+        "og:title": "MCP:每个开发者都误解了的协议 — Insights · Aindgc",
+        "og:description": "为什么 MCP 不是简单的\"AI 工具标准化\",而是 Agent 时代的基础设施。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "MCP:每个开发者都误解了的协议 — Insights · Aindgc",
+        "twitter:description": "为什么 MCP 不是简单的\"AI 工具标准化\",而是 Agent 时代的基础设施。"
+      },
+      "word_count": 248
+    },
+    {
+      "url": "https://www.aindgc.com/insights/workflow-builder-design-lessons",
+      "title": "做 Workflow Builder 的 5 个设计教训 — Insights · Aindgc",
+      "meta_description": "做 AI Workflow Builder 的真实经验:用户怎么用、怎么卡住、怎么改进。",
+      "meta_keywords": "Workflow, Productivity",
+      "headings": {
+        "h1": [
+          "做 Workflow Builder 的 5 个设计教训",
+          "做 Workflow Builder 的 5 个设计教训"
+        ],
+        "h2": [
+          "背景",
+          "教训 1:90% 的 workflow 只有 3-5 个节点",
+          "教训 2:用户不读文档,但会复制模板",
+          "教训 3:Condition 节点被低估了",
+          "教训 4:用户命名节点,但不描述节点",
+          "教训 5:导出 Markdown 比 JSON 更受欢迎",
+          "一个意外发现",
+          "总结",
+          "Related insights"
+        ],
+        "h3": [
+          "AI Agent 和 AI Workflow,到底什么关系?"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AI Workflow 2026-09-28 1 min read Aindgc做 Workflow Builder 的 5 个设计教训从 0 设计 AI Workflow Builder 的实战经验,以及用户的真实使用习惯。#Workflow#Productivity做 Workflow Builder 的 5 个设计教训> 做 Aindgc Workflow Builder 的 3 个月,我学到了 5 个关于\"用户怎么用流程编辑器\"的事情。背景我们的 Workflow Builder 是个 Vue Flow 画布,用户拖 6 种节点(Trigger / AI / Condition / Tool / Action / Output)进来连线,生成可执行的 workflow JSON。3 个月,200+ 个真实 workflow,以下是用户行为数据告诉我的事。教训 1:90% 的 workflow 只有 3-5 个节点理论上无限节点,但实际上: 平均节点数:5.4 中位数:4 80% 的 workflow:≤ 6 个节点 启示:不要被\"无限扩展\"的诱惑带偏。优化的目标是 3-5 节点的 workflow,不是 50 个节点的工作流。我们后来简化了 onboarding,默认展示 4 节点的 starter template,而不是空白画布。教训 2:用户不读文档,但会复制模板 从模板开始:62% 的 workflow 从空白开始:38% 但有意思的是,从空白开始的 38% 用户,他们的 workflow 平均节点数更少(3.2 vs 6.1)。为什么?因为他们\"不会用\"——所以做得简单。启示:模板不只是\"懒人选项\",它实际上是教学工具。每个模板都在教用户\"这个工具能做什么\"。教训 3:Condition 节点被低估了我们一开始以为 Condition 节点会很少用(复杂的逻辑谁写啊)。实际数据: 包含至少 1 个 Condition:47% 包含至少 2 个 Condition:21% 为什么?因为真实业务都有分支——\"如果客户是 A 级,做 X;否则做 Y\"。启示:Condition 不是 advanced feature,是基础能力。把它做得简单,比做得强大更重要。教训 4:用户命名节点,但不描述节点我们提供 \"Label\" 和 \"Description\" 两个字段给节点。 填了 Label:89% 填了 Description:12% 启示:节点的\"自我描述\"价值不大。用户更愿意: 给节点起个有意义的短名字(\"评分\" 而不是 \"AI_Node_1\") 依赖工具的自动描述(AI 节点的图标、Tool 节点的服务名) 把精力放在让\"自动描述\"更清晰,比让用户写 Description 更值得。教训 5:导出 Markdown 比 JSON 更受欢迎我们提供 Markdown 和 JSON 两种导出。 下载 Markdown:73% 下载 JSON:18% 两者都下:9% 为什么?因为 Markdown 是\"可读的\",JSON 是\"机器的\"。用户下载 Markdown 是为了: 粘贴到 Claude / ChatGPT 当 context 写到团队文档 / Notion 给老板看(非技术人也能读) 启示:导出格式的优先级应该是 人 > 机器。先把 Markdown 做得漂亮,再做 JSON 的 schema 严谨。一个意外发现我们追踪了用户保存 workflow 的频率: 第一次保存:100%(强制) 第二次保存:43% 第三次保存:18% 第五次以上:7% 大部分用户做一两个 workflow 就走了。这个数据让我重新思考产品的定位—— 如果定位是\"工具\":那 7% 是核心用户,服务好他们 如果定位是\"作品集\":那 100% 第一次体验更重要,要降低门槛 如果定位是\"教育\":那要走\"看完即用完\"的逻辑,深度不如广度 我们选了第三种——把 Workflow Builder 当成\"AI Workflow 教育的入口\",而不是\"生产力工具\"。这改变了很多决策: 不强调\"无限 workflow\"(更聚焦于\"做对几个\") 不强调\"高级功能\"(Condition 节点做了,但不突出) 强调\"导出 Markdown\"(让用户带走到 ChatGPT 里继续) 总结 3-5 节点 是大部分 workflow 的实际复杂度 模板是教学工具,不只是懒人选项 Condition 节点是基础,不是 advanced 节点命名 > 节点描述 Markdown 导出比 JSON 更重要 大部分用户只做 1-2 个 workflow,产品定位决定了优化方向 下一个版本我们会在这些数据基础上重新设计 UX,目标是把\"第二次保存率\"从 43% 提升到 60%",
+      "links_count": 19,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/insights/ai-agent-vs-workflow",
+          "text": "AI AgentAI Agent 和 AI Workflow,到底什么关系?从产品角度拆解 Agent 和 Workflow 的本质区别与组合方式。7 min · 2026-09-22"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "article",
+        "og:title": "做 Workflow Builder 的 5 个设计教训 — Insights · Aindgc",
+        "og:description": "做 AI Workflow Builder 的真实经验:用户怎么用、怎么卡住、怎么改进。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "做 Workflow Builder 的 5 个设计教训 — Insights · Aindgc",
+        "twitter:description": "做 AI Workflow Builder 的真实经验:用户怎么用、怎么卡住、怎么改进。"
+      },
+      "word_count": 238
+    },
+    {
+      "url": "https://www.aindgc.com/insights/real-ai-roi",
+      "title": "真实的 AI ROI:不是替代,而是放大 — Insights · Aindgc",
+      "meta_description": "AI 在企业里的真实回报路径,以及为什么\"放大\"比\"自动化\"更早产生价值。",
+      "meta_keywords": "ROI, Small Business",
+      "headings": {
+        "h1": [
+          "真实的 AI ROI:不是替代,而是放大",
+          "真实的 AI ROI:不是替代,而是放大"
+        ],
+        "h2": [
+          "一个常见误区",
+          "真实的 ROI 路径",
+          "一个真实案例",
+          "关键启示",
+          "我的 ROI 计算公式",
+          "总结"
+        ],
+        "h3": [
+          "1. 质量放大(1-3 个月回本)",
+          "2. 速度放大(3-6 个月回本)",
+          "3. 范围放大(6-12 个月回本)",
+          "1. 不要先做\"自动化\"",
+          "2. 衡量\"质量\",而不是\"数量\"",
+          "3. 节省的时间,要重新投入",
+          "4. 数据治理是隐藏成本"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AI Business 2026-08-25 1 min read Aindgc真实的 AI ROI:不是替代,而是放大从实际案例看,AI 在企业里最先产生回报的从来不是\"自动化\"。#ROI#Small Business真实的 AI ROI:不是替代,而是放大> 一句话:AI 在企业里最先回本的,从来不是\"自动化\",而是\"放大\"。一个常见误区很多企业评估 AI ROI 时,逻辑是这样的:节省人力 = 员工人数 × 平均工资 × 自动化比例 听起来很合理。但实际跑下来,这条路很少回本。为什么?因为:1. 自动化需要数据治理、系统集成、流程改造 2. AI 出错率通常 5-15%,需要人 review 3. 实际\"节省的人力\"很难真正裁掉,会转移到别的工作真实的 ROI 路径我们观察了 30+ 个企业的实际 AI 项目(从初创到上市公司),发现最先回本的是这 3 类:1. 质量放大(1-3 个月回本)场景:同样的员工,做出更好的产出。典型例子: 销售:同样的客户数,转化率从 3% → 5%(因为 AI 帮销售写更好的跟进邮件) 客服:同样的工单数,CSAT 从 80 → 90(因为 AI 帮客服更专业地回复) 工程师:同样的代码量,bug 率降低 40%(因为 AI 帮做更好的代码 review) 为什么先回本: 不需要裁人(HR 不阻碍) 不需要重写流程(改动小) 效果可量化(转化率 / CSAT / bug 率) 2. 速度放大(3-6 个月回本)场景:同样的产出,做得更快。典型例子: 内容:同样的文章数,生产周期从 5 天 → 1 天 开发:同样的功能,交付时间从 4 周 → 2 周 分析:同样的报告,从 3 天 → 半天 关键:节省的时间没有变成\"摸鱼时间\",而是被重新投入到\"做更多事\"上。3. 范围放大(6-12 个月回本)场景:原来不做的事,现在做了。典型例子: 小企业开始做个性化营销(以前只能群发) 中型公司开始做24/7 客服(以前只能工作时间) 创业公司开始做多语言支持(以前只能英语) 这是最难衡量的 ROI,但也是最大的护城河。一个真实案例一家做 B2B SaaS 的小公司,30 人销售团队。他们的 AI 项目:第 1 个月(质量放大): 用 AI 给每个客户写个性化的 cold email 销售回复率从 8% → 15%(几乎翻倍) 月新增 ARR:¥80k → ¥150k AI 成本:¥3k/月 净收益:¥67k/月 第 3 个月(速度放大): AI 帮销售准备 demo materials 销售每天能见 4 个客户(以前 2 个) 同样的销售人数,产出翻倍 第 6 个月(范围放大): 开始做\"AI SDR\"——AI 自动联系冷客户,只有真正感兴趣的才转人工 这在以前是\"做不到\"的事,因为人力不够 关键启示1. 不要先做\"自动化\"\"自动化\"的 ROI 听起来大,但实施成本也大。先做\"放大\"——同样的人,更好的产出。2. 衡量\"质量\",而不是\"数量\" 销售:看转化率 客服:看 CSAT 工程师:看 bug 率 / review 通过率 不要只看\"AI 节省了多少小时\"。3. 节省的时间,要重新投入最常见的失败模式: 销售用 AI 多联系 2 个客户 → 然后多摸鱼 2 小时 → 净收益 0 工程师用 AI 多写 50% 代码 → 然后多 review 50% 的代码 → 总时间不变 要明确规定:节省的时间用来做什么。4. 数据治理是隐藏成本不管哪种 AI 项目,数据治理都会比你想象的复杂: 数据在哪?(CRM?邮件?Excel?) 数据质量如何?(缺失值?重复?) 数据如何更新?(实时?批量?) 先把数据搞清楚,再谈 AI。我的 ROI 计算公式实际评估时,我用这个公式:AI 真实 ROI = (质量提升带来的额外收入) + (速度提升带来的额外产出) + (范围扩大带来的新收入) (AI 工具成本) (数据治理成本) (人类 review / 监督成本) 几乎所有情况下,前 3 项(放大) >> 后 3 项(替代 + 成本)。总结 AI 的真实价值不在替代,在放大 先做\"质量放大\"(1-3 个月回本),再做\"速度放大\"(3-6 个月),最后做\"范围放大\"(6-12 个月) 衡量\"质量指标\"(转化率、CSAT、bug 率),不是\"节省时间\" 数据治理是隐藏成本,先做再说 AI",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "article",
+        "og:title": "真实的 AI ROI:不是替代,而是放大 — Insights · Aindgc",
+        "og:description": "AI 在企业里的真实回报路径,以及为什么\"放大\"比\"自动化\"更早产生价值。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "真实的 AI ROI:不是替代,而是放大 — Insights · Aindgc",
+        "twitter:description": "AI 在企业里的真实回报路径,以及为什么\"放大\"比\"自动化\"更早产生价值。"
+      },
+      "word_count": 231
+    },
+    {
+      "url": "https://www.aindgc.com/insights/claude-code-as-product",
+      "title": "把 Claude Code 当作产品,而不是工具 — Insights · Aindgc",
+      "meta_description": "CLI 形式的 AI Coding 工具会成为下一代 Native IDE,而不是 VSCode 插件。",
+      "meta_keywords": "Claude Code, Cursor",
+      "headings": {
+        "h1": [
+          "把 Claude Code 当作产品,而不是工具",
+          "把 Claude Code 当作产品,而不是工具"
+        ],
+        "h2": [
+          "一个被忽略的事实",
+          "为什么是 CLI,而不是 GUI?",
+          "一个反直觉的对比",
+          "实际工作流的改变",
+          "对个人开发者的启示",
+          "对团队的启示",
+          "项目",
+          "代码风格",
+          "禁忌",
+          "我的判断",
+          "总结"
+        ],
+        "h3": [
+          "1. CLI 更适合 Agent 工作流",
+          "2. CLI 跨平台 / 跨编辑器",
+          "3. CLI 是 Agent 时代的\"文件系统\"",
+          "技能转变",
+          "项目结构的变化",
+          "文档化是新的代码审查"
+        ],
+        "h4": [
+          "产品",
+          "资源",
+          "公司"
+        ]
+      },
+      "body_text": "AI Coding 2026-09-18 2 min read Aindgc把 Claude Code 当作产品,而不是工具为什么 CLI 形式的 AI Coding 工具会成为下一个 Native IDE。#Claude Code#Cursor把 Claude Code 当作产品,而不是工具> Claude Code / Codex / Gemini CLI —— 这些不是\"AI 编码工具\",它们是新的开发环境。一个被忽略的事实Anthropic 发布 Claude Code 时,大部分评论聚焦在\"AI 能写代码了\"。但真正的故事是:Anthropic 把 IDE 重新定义了一遍。传统 IDE 的核心假设: 1. 你写代码 2. 你调试 3. AI 辅助Claude Code 翻转了这个假设: 1. AI 写代码 2. 你审查 + 引导 3. 你调试 AI(而不是调试代码)为什么是 CLI,而不是 GUI?很多人困惑:为什么不给 Claude Code 做一个 VSCode 插件?几个原因:1. CLI 更适合 Agent 工作流VSCode 的模型是\"你在 IDE 里操作文件\"。Claude Code 的模型是\"AI 在文件系统里操作,你看着\"。这两个模型的根本冲突:VSCode 假设人在 loop 里,Claude Code 假设 AI 在 loop 里。2. CLI 跨平台 / 跨编辑器Claude Code 在 macOS / Linux / Windows 上是同一个体验。它读 CLAUDE.md、跑 git、看文件——这些跟编辑器无关。你用 vim、Emacs、VSCode、JetBrains,Claude Code 都能用。3. CLI 是 Agent 时代的\"文件系统\"未来 5 年,大量的\"开发工作\"会变成:给 AI 一份规范,看它输出什么。这种工作流的最佳载体是什么?终端 —— 因为: 所有输出都是文本(LLM 最擅长处理) 易于 grep / diff / version control 易于组合(pipe 到别的 CLI 工具) 一个反直觉的对比| 维度 | VSCode | Claude Code | |------|--------|-------------| | 主语 | 人在写代码 | AI 在写代码 | | 注意力 | 你盯代码 | 你盯 AI 输出 | | 错误修复 | 你调 | 你重新 prompt | | 学习曲线 | 高(快捷键、扩展) | 低(natural language) | | 可审计性 | git diff | prompt + diff |实际工作流的改变传统工作流: 1. 打开 VSCode 2. 写代码 3. 调试 4. 提交Claude Code 工作流: 1. 写 CLAUDE.md(项目规范) 2. claude \"实现 XX 功能\" 3. Review diff 4. git commit注意:CLAUDE.md 成了新的\"代码\"。对个人开发者的启示技能转变 从写代码 → 写规范:CLAUDE.md、AGENTS.md 才是新代码 从调试代码 → 调试 AI:会写 prompt、会选模型、会设计 system message 从单机 IDE → 命令行工程:git / grep / curl / jq / docker 这些 CLI 工具的熟练度更重要 项目结构的变化my-project/ ├── CLAUDE.md # AI 工作规范 ├── AGENTS.md # 多 agent 协作规范 ├── docs/ │ ├── architecture.md │ └── decisions.md ├── src/ └── tests/ AI 友好的项目结构,跟传统项目结构不一样。对团队的启示文档化是新的代码审查传统 PR review 看代码逻辑。新模式:PR review 看规范是否清晰。# CLAUDE.md 范例项目 Vue 3 + TypeScript SPA,跑在 Cloudflare Pages。代码风格 Composition API + <script setup> Pinia 不用 Vuex 所有公共组件以 A 开头(AButton, ACard) 颜色 / 间距用 CSS Variables,不要硬编码 禁忌 不要在 src/ 写 .jsx 不要用 moment,用 dayjs 不要 console.log,有问题用 logger 这种规范越具体,AI 输出越稳。我的判断未来 3 年,Native AI IDE 会吃掉传统 IDE 50% 的份额。不是 VSCode 加 AI 插件那种渐进式,而是重新设计 —— 就像 iPhone 重新设计",
+      "links_count": 18,
+      "links": [
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "案例"
+        },
+        {
+          "href": "https://www.aindgc.com/login",
+          "text": "登录"
+        },
+        {
+          "href": "https://www.aindgc.com/register",
+          "text": "注册"
+        },
+        {
+          "href": "https://www.aindgc.com/",
+          "text": "Aindgc"
+        },
+        {
+          "href": "https://www.aindgc.com/tools",
+          "text": "AI 工具"
+        },
+        {
+          "href": "https://www.aindgc.com/workflow",
+          "text": "工作流编辑器"
+        },
+        {
+          "href": "https://www.aindgc.com/skills",
+          "text": "Skills 市场"
+        },
+        {
+          "href": "https://www.aindgc.com/coding",
+          "text": "Coding 模板"
+        },
+        {
+          "href": "https://www.aindgc.com/roi",
+          "text": "ROI 计算器"
+        },
+        {
+          "href": "https://www.aindgc.com/checkup",
+          "text": "AI 体检"
+        },
+        {
+          "href": "https://www.aindgc.com/cases",
+          "text": "项目案例"
+        },
+        {
+          "href": "https://www.aindgc.com/insights",
+          "text": "行业洞察"
+        },
+        {
+          "href": "https://github.com/",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://twitter.com/",
+          "text": "Twitter"
+        },
+        {
+          "href": "mailto:1090980484@qq.com",
+          "text": "1090980484@qq.com"
+        },
+        {
+          "href": "https://beian.miit.gov.cn/",
+          "text": "苏ICP备2026053364号"
+        }
+      ],
+      "images_count": 0,
+      "images": [],
+      "og_tags": {
+        "og:type": "article",
+        "og:title": "把 Claude Code 当作产品,而不是工具 — Insights · Aindgc",
+        "og:description": "CLI 形式的 AI Coding 工具会成为下一代 Native IDE,而不是 VSCode 插件。",
+        "og:locale": "zh_CN"
+      },
+      "twitter_tags": {
+        "twitter:card": "summary_large_image",
+        "twitter:title": "把 Claude Code 当作产品,而不是工具 — Insights · Aindgc",
+        "twitter:description": "CLI 形式的 AI Coding 工具会成为下一代 Native IDE,而不是 VSCode 插件。"
+      },
+      "word_count": 328
+    }
+  ],
+  "skipped": [],
+  "error_details": []
+}

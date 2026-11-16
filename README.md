@@ -76,6 +76,7 @@
 - ⏱️ **礼貌延迟**：两次请求间随机等待（默认 0.5~1.5 秒）
 - 📄 **结构化解析**：标题 / meta / h1~h6 / 正文 / 内链 / 图片 / OG / Twitter Card
 - 🌐 **同域过滤**：只爬同域名下的页面，自动跳过外链
+- 🎭 **SPA 渲染模式**（`--playwright`）：对 Vue/React 等 CSR 站执行 JS 后再解析
 - 💾 **JSON 输出**：全量结果导出为 JSON 文件
 
 **用法**：
@@ -90,9 +91,20 @@
 # 自己的站可以不遵守 robots.txt
 .\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 3 --no-robots
 
+# SPA 站点（Vite/React/Nuxt）用 Playwright 渲染后再解析
+.\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 2 --playwright
+
 # 限制最大页面数 + 调慢延迟
 .\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 2 --max-pages 30 --delay 1.0 3.0
 ```
+
+> **SPA 模式前置条件**：
+> ```bash
+> pip install playwright
+> playwright install chromium      # 公司网可能很慢，可跳过
+> ```
+> 跳过下载也能用 —— 代码会自动探测系统已安装的 **Chrome / Edge**（Windows 自带 Edge），
+> 优先用系统浏览器，免去 200MB 下载。
 
 ### GEO 内容智能体能力
 
@@ -370,6 +382,7 @@ aiwork-backend/
 │       ├── __init__.py
 │       ├── parsers.py             # HTML 解析（标题/meta/正文/链接/OG标签）
 │       ├── crawler.py             # BFS 爬虫核心 + CrawlConfig/CrawlResult
+│       ├── renderer.py            # Playwright 渲染器（SPA 站必需）
 │       └── crawl.py               # CLI 入口（python -m app.crawler.crawl）
 │
 │   └── models/

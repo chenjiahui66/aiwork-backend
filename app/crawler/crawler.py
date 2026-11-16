@@ -1,8 +1,9 @@
 """
-核心爬虫 - BFS 广度优先 + 深度控制 + 礼貌延迟 + robots.txt
+核心爬虫 - BFS 广度优先 + 深度控制 + 礼貌延迟 + robots.txt + Playwright SPA 渲染
 
 设计要点:
-  - 用 httpx 同步客户端（简单直接，练手不需要异步）
+  - 默认用 httpx 同步客户端（轻量快速）
+  - 开 use_playwright=True 后用 Playwright headless Chromium 渲染 SPA
   - BFS 按深度层推进，每层可配置最大页面数
   - 自动尊重 robots.txt（可关闭）
   - 两次请求之间随机延迟，避免压垮目标站
@@ -38,6 +39,8 @@ class CrawlConfig:
     respect_robots: bool = True       # 是否遵守 robots.txt
     user_agent: str = "AiWorkCrawler/1.0 (practice bot)"
     output_path: str = ""            # JSON 结果输出路径
+    use_playwright: bool = False      # 是否用 Playwright 渲染 SPA
+    pw_wait_seconds: float = 2.0     # Playwright 等待 JS 渲染秒数
 
 
 @dataclass
@@ -79,6 +82,7 @@ class Crawler:
         self.result = CrawlResult(config=config)
         self._visited: set[str] = set()
         self._robots_disallowed: set[str] = set()
+        self._renderer = None  # Playwright renderer, lazy init
 
     # ---- robots.txt ----
 
@@ -154,20 +158,16 @@ class Crawler:
 
     # ---- 单页抓取 ----
 
-    def _fetch_page(self, client: httpx.Client, url: str) -> ParsedPage | None:
-        """抓取并解析单个页面"""
+    def _fetch_page_httpx(self, client: httpx.Client, url: str) -> str | None:
+        """用 httpx 抓取原始 HTML"""
         try:
             resp = client.get(url, timeout=self.cfg.timeout, follow_redirects=True)
             resp.raise_for_status()
-
-            # 只处理 HTML
             ct = resp.headers.get("content-type", "")
             if "text/html" not in ct and "application/xhtml" not in ct:
                 logger.debug("跳过非 HTML 页面: %s (%s)", url, ct)
                 return None
-
-            return parse_html(resp.text, str(resp.url))
-
+            return resp.text
         except httpx.HTTPStatusError as e:
             err = f"HTTP {e.response.status_code}"
             logger.warning("抓取失败 %s: %s", url, err)
@@ -179,6 +179,30 @@ class Crawler:
             self.result.errors.append({"url": url, "error": err})
             return None
 
+    def _fetch_page(self, client: httpx.Client, url: str) -> ParsedPage | None:
+        """抓取并解析单个页面（自动选择 httpx 或 Playwright）"""
+        if self.cfg.use_playwright and self._renderer:
+            # Playwright 模式：直接渲染
+            html = self._renderer.render(url)
+            if html:
+                return parse_html(html, url)
+            # Playwright 失败，fallback 到 httpx
+            logger.info("Playwright 渲染失败, fallback httpx: %s", url)
+
+        # httpx 模式
+        html = self._fetch_page_httpx(client, url)
+        if html is None:
+            return None
+
+        page = parse_html(html, url)
+
+        # SPA 检测：如果 body 几乎为空但 HTML 里有 <div id="app">，
+        # 提示用户可以用 --playwright 模式
+        if page.word_count < 5 and 'id="app"' in html:
+            logger.info("检测到 SPA 空壳页面: %s (可用 --playwright 模式)", url)
+
+        return page
+
     # ---- BFS 主循环 ----
 
     def run(self) -> CrawlResult:
@@ -186,7 +210,7 @@ class Crawler:
         执行爬取，返回 CrawlResult
 
         流程:
-          1. 初始化 httpx 客户端
+          1. 初始化 httpx 客户端（+ 可选 Playwright）
           2. 读取 robots.txt
           3. 读取 sitemap.xml 补 URL 池
           4. BFS 按深度推进，每层抓取后提取内链加入下一层
@@ -194,9 +218,48 @@ class Crawler:
         """
         start = time.time()
         root_domain = urlparse(self.cfg.start_url).netloc
-        logger.info("开始爬取 %s (depth=%d, max_pages=%d)",
-                     self.cfg.start_url, self.cfg.max_depth, self.cfg.max_pages)
+        logger.info("开始爬取 %s (depth=%d, max_pages=%d, playwright=%s)",
+                     self.cfg.start_url, self.cfg.max_depth, self.cfg.max_pages,
+                     self.cfg.use_playwright)
 
+        # 初始化 Playwright（如果需要）
+        if self.cfg.use_playwright:
+            try:
+                from app.crawler.renderer import PlaywrightRenderer, RendererConfig
+                pw_cfg = RendererConfig(
+                    headless=True,
+                    wait_seconds=self.cfg.pw_wait_seconds,
+                    timeout=self.cfg.timeout,
+                    user_agent=self.cfg.user_agent,
+                )
+                self._renderer = PlaywrightRenderer(pw_cfg)
+                self._renderer.start()
+            except Exception as e:
+                logger.warning("Playwright 启动失败，回退 httpx 模式: %s", e)
+                self._renderer = None
+                self.cfg.use_playwright = False
+
+        try:
+            self._run_crawl(root_domain)
+        finally:
+            # 确保 Playwright 关闭
+            if self._renderer:
+                self._renderer.stop()
+                self._renderer = None
+
+        self.result.total_time = time.time() - start
+        logger.info("爬取完成: %d 页, %d 跳过, %d 错误, 耗时 %.1fs",
+                     len(self.result.pages), len(self.result.skipped),
+                     len(self.result.errors), self.result.total_time)
+
+        # 保存结果
+        if self.cfg.output_path:
+            self._save_json()
+
+        return self.result
+
+    def _run_crawl(self, root_domain: str) -> None:
+        """BFS 主循环（从 run() 调用，已被 try/finally 包裹）"""
         with httpx.Client(
             headers={"User-Agent": self.cfg.user_agent},
             follow_redirects=True,
@@ -254,17 +317,6 @@ class Crawler:
                     for link in internal:
                         if link not in self._visited:
                             queue.append((link, depth + 1))
-
-        self.result.total_time = time.time() - start
-        logger.info("爬取完成: %d 页, %d 跳过, %d 错误, 耗时 %.1fs",
-                     len(self.result.pages), len(self.result.skipped),
-                     len(self.result.errors), self.result.total_time)
-
-        # 保存结果
-        if self.cfg.output_path:
-            self._save_json()
-
-        return self.result
 
     # ---- 输出 ----
 
