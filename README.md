@@ -21,6 +21,7 @@
 | 📧 **SMTP 发邮件** | `/api/email/*` | 通用"发邮件"按钮（SMTP 协议，零新依赖） |
 | 📊 **飞书多维表格** | `/api/feishu/*` | 一键导入会议任务到飞书 Bitable |
 | 🚀 **GEO 内容智能体** | `/api/geo/*` | 自媒体博主专用 · 标题→选题研究→文章→GEO 评分→多平台发布包 |
+| 🕷️ **网站爬虫** | CLI 独立脚本 | BFS 广度优先 + 深度控制 + robots.txt + sitemap.xml + 结构化解析 |
 
 > 新增模块原则：**一个能力一个文件夹**，不混。
 
@@ -65,6 +66,34 @@
 - ✏️ 前端可手动编辑后再推送
 - 🔑 `tenant_access_token` 2 小时缓存 + 自动刷新
 
+### 网站爬虫能力
+
+> 定位：**独立 CLI 脚本**，不入 FastAPI 路由，练手爬虫功能。
+
+- 🕷️ **BFS 广度优先**：按深度层推进，可控最大页面数
+- 🔒 **robots.txt 自动遵守**：解析 Disallow 规则（可 `--no-robots` 关闭）
+- 🗺️ **sitemap.xml 发现**：自动读取站点地图补充 URL 池
+- ⏱️ **礼貌延迟**：两次请求间随机等待（默认 0.5~1.5 秒）
+- 📄 **结构化解析**：标题 / meta / h1~h6 / 正文 / 内链 / 图片 / OG / Twitter Card
+- 🌐 **同域过滤**：只爬同域名下的页面，自动跳过外链
+- 💾 **JSON 输出**：全量结果导出为 JSON 文件
+
+**用法**：
+
+```bash
+# 基本用法（爬 1 层深度）
+.\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com
+
+# 指定深度 + 输出文件
+.\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 2 --output results.json
+
+# 自己的站可以不遵守 robots.txt
+.\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 3 --no-robots
+
+# 限制最大页面数 + 调慢延迟
+.\.venv\Scripts\python.exe -m app.crawler.crawl https://www.example.com --depth 2 --max-pages 30 --delay 1.0 3.0
+```
+
 ### GEO 内容智能体能力
 
 > 定位：**AI 自媒体研究员 + GEO 内容编辑 + 视觉设计师**
@@ -91,7 +120,7 @@
 | 文档解析 | pypdf / python-docx / markdown | 按格式分发 |
 | 工作流 | LangGraph StateGraph | 真正的图状态机 |
 | 邮件 | Python 标准库 smtplib | 零新增依赖 |
-| 飞书 | httpx + 飞书 OpenAPI | 异步 HTTP，无 SDK 依赖 |
+| 🕷️ 爬虫 | httpx + BeautifulSoup + lxml | 轻量 HTTP + HTML 解析，练手足够 |
 
 ## 快速开始
 
@@ -337,6 +366,11 @@ aiwork-backend/
 │   ├── email/                     # —— SMTP 发邮件 ——
 │   └── feishu/                    # —— 飞书多维表格 Bitable ——
 │   └── geo/                       # —— GEO 内容智能体 (12 步 Agent + 7 prompt 文件) ——
+│   └── crawler/                   # —— 网站爬虫 (BFS + robots.txt + sitemap + 结构化解析) ——
+│       ├── __init__.py
+│       ├── parsers.py             # HTML 解析（标题/meta/正文/链接/OG标签）
+│       ├── crawler.py             # BFS 爬虫核心 + CrawlConfig/CrawlResult
+│       └── crawl.py               # CLI 入口（python -m app.crawler.crawl）
 │
 │   └── models/
 │       └── schemas.py             # Pydantic 模型（请求/响应）
@@ -351,6 +385,7 @@ aiwork-backend/
 │   ├── smoke_email.py             # 本地 mock SMTP 冒烟测试
 │   └── smoke_feishu.py            # 本地 mock 飞书 OpenAPI 冒烟测试
 │   └── smoke_geo.py               # 本地 mock LLM 跑 GEO 12 步全流程
+│   └── smoke_crawler.py           # 本地 mock 爬虫模块 9 项测试
 ├── .env.example
 ├── requirements.txt
 └── README.md
@@ -377,7 +412,7 @@ aiwork-backend/
 
 ## 路线图
 
-- [x] 11 个 AI 应用模块 + 邮件 + 飞书集成
+- [x] 11 个 AI 应用模块 + 邮件 + 飞书集成 + 爬虫脚本
 - [x] 前端 Vue 应用市场接入（10 个卡片 + 侧边栏）
 - [ ] 多轮对话持久化（半天）
 - [ ] OCR 图片转文字（半天）
@@ -450,3 +485,4 @@ A: 字段类型不匹配。`Date` 字段要传毫秒时间戳（`{value: 1700000
 11	SMTP 发邮件	不是 LLM	SMTP 协议
 12	飞书多维表格	Workflow	解析→编辑→推送，3 步写死
 13	GEO 内容智能体	Workflow（冒充 Agent）	12 步写死在 orchestrator.py
+14	网站爬虫	独立脚本（非 LLM）	BFS + robots.txt + sitemap + 结构化解析
