@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AiWork · 向量库可视化</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafafa;
+  --surface:#ffffff;
+  --line:#e4e4e7;
+  --line-soft:#f4f4f5;
+  --text:#18181b;
+  --muted:#71717a;
+  --muted-2:#a1a1aa;
+  --accent:#3b82f6;
+  --accent-soft:rgba(59,130,246,.08);
+  --doc-a:#3b82f6;
+  --doc-b:#f59e0b;
+  --shadow:0 2px 8px rgba(0,0,0,.04);
+  --shadow-lg:0 4px 16px -2px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace}
+.wrap{max-width:1380px;margin:0 auto;padding:0 24px 72px}
+
+/* ---------- header ---------- */
+.head{padding:44px 0 28px}
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);display:flex;align-items:center;gap:7px;margin-bottom:12px;
+}
+.eyebrow svg{width:14px;height:14px}
+h1{font-size:32px;font-weight:600;letter-spacing:-.015em;line-height:1.15}
+.lead{color:var(--muted);font-size:15px;margin-top:8px;max-width:760px}
+
+/* ---------- stats strip ---------- */
+.stats{
+  display:flex;flex-wrap:wrap;gap:0;margin:26px 0 30px;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.stat{padding:14px 22px;border-right:1px solid var(--line-soft);flex:1 1 auto;min-width:120px}
+.stat:last-child{border-right:none}
+.stat .k{display:block;font-size:11px;color:var(--muted);letter-spacing:.04em;margin-bottom:3px}
+.stat .v{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.stat .v small{font-size:12px;font-weight:400;color:var(--muted);margin-left:3px}
+
+/* ---------- layout ---------- */
+.main{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:22px;align-items:start}
+@media(max-width:1080px){.main{grid-template-columns:1fr}}
+
+/* ---------- card ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);margin-bottom:22px;overflow:hidden;
+}
+.card-head{
+  padding:16px 20px;border-bottom:1px solid var(--line-soft);
+  display:flex;align-items:center;gap:10px;justify-content:space-between;
+}
+.card-title{font-size:15px;font-weight:600;display:flex;align-items:center;gap:9px}
+.card-title svg{width:16px;height:16px;color:var(--accent)}
+.card-sub{font-size:12px;color:var(--muted);font-weight:400}
+.card-body{padding:18px 20px}
+
+/* ---------- heatmap ---------- */
+.heat-wrap{position:relative;overflow:hidden;border-radius:10px}
+canvas{display:block;width:100%}
+#heat{height:430px;cursor:crosshair}
+#scatter{height:320px;cursor:pointer}
+.tip{
+  position:absolute;pointer-events:none;background:#18181b;color:#fff;
+  font-size:11.5px;line-height:1.45;padding:6px 9px;border-radius:7px;
+  opacity:0;transition:opacity .12s;max-width:260px;z-index:20;
+  font-family:'JetBrains Mono',monospace;
+}
+.tip.on{opacity:1}
+
+/* ---------- legend ---------- */
+.legend{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);margin-top:12px;flex-wrap:wrap}
+.ramp{height:8px;width:130px;border-radius:4px;background:linear-gradient(90deg,#eef2f7,#bfd7f7,#6ea8f5,#1d4ed8)}
+.swatch{width:9px;height:9px;border-radius:50%;display:inline-block;vertical-align:middle}
+
+/* ---------- search ---------- */
+.search-box{position:relative}
+.search-box svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--muted-2)}
+input[type=text]{
+  width:100%;padding:10px 12px 10px 34px;border:1px solid var(--line);border-radius:10px;
+  font-size:14px;font-family:inherit;background:var(--bg);color:var(--text);outline:none;
+  transition:border-color .18s,box-shadow .18s;
+}
+input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);background:#fff}
+
+/* ---------- chunk list ---------- */
+.list{max-height:330px;overflow-y:auto;margin-top:12px;border:1px solid var(--line-soft);border-radius:10px}
+.item{
+  padding:9px 13px;border-bottom:1px solid var(--line-soft);cursor:pointer;
+  display:flex;gap:10px;align-items:baseline;transition:background .15s;
+}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--line-soft)}
+.item.on{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.item .n{font-size:11px;color:var(--muted-2);min-width:30px;font-family:'JetBrains Mono',monospace}
+.item .tx{font-size:13px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item.on .tx{color:var(--text);font-weight:500}
+.item .tag{font-size:10px;padding:1.5px 6px;border-radius:5px;white-space:nowrap;font-weight:500}
+.empty{padding:26px;text-align:center;color:var(--muted);font-size:13px}
+
+/* ---------- detail ---------- */
+.detail-top{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.pill{
+  font-size:11px;padding:3px 9px;border-radius:6px;background:var(--line-soft);
+  color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:5px;
+}
+.pill.doc{background:rgba(59,130,246,.1);color:#1d4ed8}
+.chunk-text{
+  background:#fcfcfd;border:1px solid var(--line-soft);border-radius:10px;
+  padding:13px 15px;font-size:13px;line-height:1.62;max-height:230px;overflow-y:auto;
+  white-space:pre-wrap;word-break:break-word;color:#3a4256;
+}
+
+/* ---------- similar list ---------- */
+.sec-label{
+  font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:20px 0 10px;display:flex;align-items:center;gap:7px;
+}
+.sec-label svg{width:13px;height:13px}
+.sim{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden}
+.sim-row{padding:9px 12px;border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .15s}
+.sim-row:last-child{border-bottom:none}
+.sim-row:hover{background:var(--line-soft)}
+.sim-head{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.sim-id{font-size:11px;color:var(--muted-2);font-family:'JetBrains Mono',monospace}
+.sim-score{font-size:11.5px;font-weight:600;font-family:'JetBrains Mono',monospace;margin-left:auto}
+.sim-track{height:5px;background:var(--line-soft);border-radius:3px;overflow:hidden;margin-bottom:5px}
+.sim-fill{height:100%;border-radius:3px;transition:width .3s}
+.sim-tx{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- explain ---------- */
+.explain{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px 26px}
+.explain h2{font-size:19px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
+.explain .sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.ex-grid{grid-template-columns:1fr}}
+.ex-item h3{font-size:14px;font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.ex-item h3 svg{width:15px;height:15px;color:var(--accent)}
+.ex-item p{font-size:13px;color:var(--muted);line-height:1.6}
+.ex-item p b{color:var(--text);font-weight:600}
+.filebox{
+  margin-top:20px;padding:13px 15px;background:#fcfcfd;border:1px solid var(--line-soft);
+  border-radius:10px;font-size:12.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;
+  line-height:1.75;
+}
+.filebox b{color:var(--text);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l10-5 10 5-10 5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      AIWORK · RAG · FAISS
+    </div>
+    <h1>向量库可视化</h1>
+    <p class="lead">这是你项目里 <span class="mono">data/chroma/aiwork_kb.faiss</span> 的真实内容——每个点是一个被切分的文档片段，点与点的距离代表语义相似程度。</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="main">
+    <!-- ============ 左列：图表 ============ -->
+    <div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            相似度矩阵
+          </div>
+          <div class="card-sub">107 × 107 · 颜色越深越相似</div>
+        </div>
+        <div class="card-body">
+          <div class="heat-wrap" id="heatWrap">
+            <canvas id="heat"></canvas>
+            <div class="tip" id="heatTip"></div>
+          </div>
+          <div class="legend">
+            <span>低相似</span><div class="ramp"></div><span>高相似</span>
+            <span style="margin-left:14px">点击任意格子 → 选中该片段</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg>
+            二维投影（PCA）
+          </div>
+          <div class="card-sub">512 维压到 2 维 · 距离近 = 语义相近</div>
+        </div>
+        <div class="card-body">
+          <div class="heat-wrap" id="scatWrap">
+            <canvas id="scatter"></canvas>
+            <div class="tip" id="scatTip"></div>
+          </div>
+          <div class="legend" id="scatLegend"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 右列：交互面板 ============ -->
+    <div>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            片段检索
+          </div>
+          <div class="card-sub" id="hitCount"></div>
+        </div>
+        <div class="card-body">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" id="q" placeholder="输入关键词过滤片段，如：评标 / 员工 / 工资">
+          </div>
+          <div class="list" id="list"></div>
+        </div>
+      </div>
+
+      <div class="card" id="detailCard">
+        <div class="card-head">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>
+            片段详情
+          </div>
+          <div class="card-sub" id="detailId"></div>
+        </div>
+        <div class="card-body" id="detailBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 说明 ============ -->
+  <div class="explain">
+    <h2>怎么看这两张图</h2>
+    <p class="sub">向量库的本质就是「把文字变成一串数字，意思越像数字越接近」。这两张图就是把这串数字画出来。</p>
+    <div class="ex-grid">
+      <div class="ex-item">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          相似度矩阵：谁和谁是一家人
+        </h3>
+        <p>每一行是一个片段，每一列也是同一个片段。<b>格子越深</b>，说明这两个片段在语义上越接近。<br><br>对角线永远是 1（自己跟自己最像），所以它被淡化处理了——真正有信息量的是<b>偏离对角线的深色格子</b>，那些是「内容上是同一块东西、但被切成了两段」的片段。<br><br>点一下格子，右边会列出它最相似的其他片段。</p>
+      </div>
+      <div class="ex-item">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg>
+          二维投影：整体分布
+        </h3>
+        <p>把 512 维压成 2 维（PCA），<b>距离近 = 语义相近</b>，跟矩阵是同一件事换个角度看。<br><br>不同颜色是不同文档。<b>同色的点聚在一起</b>，说明切片和原始文档对应关系是正常的；如果一个文档的点散得到处都是，通常是切片粒度或内容分布有问题。<br><br>注意：PCA 只保留了 18.8% 的方差，位置本身没有绝对含义，<b>看的是相对聚集程度</b>，不是精确坐标。</p>
+      </div>
+    </div>
+    <div class="filebox">
+      <b>数据来源</b>　D:\project\MVPdemo\aiwork-backend\data\chroma\aiwork_kb.faiss　+　aiwork_kb.pkl<br>
+      <b>向量模型</b>　BAAI/bge-small-zh-v1.5（512 维，已归一化 → 欧氏距离等价余弦相似度）<br>
+      <b>索引类型</b>　IndexFlatL2（暴力精确检索，107 条数据量完全够用，无需近似索引）
+    </div>
+  </div>
+</div>
+
+<script id="payload" type="application/json">/*__DATA__*/</script>
+<script>
+const DATA = JSON.parse(document.getElementById('payload').textContent);
+const CH = DATA.chunks, SIM = DATA.sim, CO = DATA.coords, DOCS = DATA.docs;
+let selected = 0;
+
+/* ---------------- stats ---------------- */
+document.getElementById('stats').innerHTML = [
+  ['向量条数', DATA.meta.ntotal, ''],
+  ['向量维度', DATA.meta.dim, '维'],
+  ['索引类型', 'IndexFlatL2', ''],
+  ['文档数', DOCS.length, '个'],
+  ['平均相似度', DATA.meta.sim_mean_offdiag.toFixed(3), ''],
+].map(([k,v,u]) => `<div class="stat"><span class="k">${k}</span><span class="v">${v}${u?`<small>${u}</small>`:''}</span></div>`).join('');
+
+document.getElementById('scatLegend').innerHTML = DOCS.map(d =>
+  `<span><span class="swatch" style="background:${d.color}"></span> ${d.filename.replace(/^[0-9a-f]+_/,'')}（${d.chunks} 段）</span>`
+).join('') + '<span style="margin-left:10px">PCA 保留方差 ' + (DATA.meta.var_explained.reduce((a,b)=>a+b,0)*100).toFixed(1) + '%</span>';
+
+/* ---------------- helpers ---------------- */
+function docOf(i){ return DOCS.find(d => d.doc_id === CH[i].doc_id); }
+function txtOf(i){ return (CH[i].text || '').replace(/\s+/g,' ').trim(); }
+
+function lerpColor(t){
+  // 低相似 → 高相似：浅灰蓝 → 深蓝
+  const stops = [[0,[238,242,247]],[.35,[191,215,247]],[.7,[110,168,245]],[1,[29,78,216]]];
+  t = Math.max(0, Math.min(1, t));
+  for(let i=0;i<stops.length-1;i++){
+    const [a,ca]=stops[i],[b,cb]=stops[i+1];
+    if(t<=b){ const r=(t-a)/(b-a); return `rgb(${ca.map((v,k)=>Math.round(v+(cb[k]-v)*r)).join(',')})`; }
+  }
+  return 'rgb(29,78,216)';
+}
+// 相似度 → 归一化位置（用真实的非对角范围，拉开对比）
+function simT(v){
+  const a = DATA.meta.sim_offdiag_min, b = DATA.meta.sim_offdiag_max;
+  return Math.max(0, Math.min(1, (v-a)/(b-a)));
+}
+
+/* ---------------- heatmap ---------------- */
+const heat = document.getElementById('heat');
+const heatTip = document.getElementById('heatTip');
+let heatCells = [];
+
+function drawHeat(){
+  const n = CH.length;
+  const W = heat.clientWidth, H = 430;
+  const dpr = window.devicePixelRatio || 1;
+  heat.width = W*dpr; heat.height = H*dpr;
+  heat.style.height = H+'px';
+  const ctx = heat.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const size = Math.floor(Math.min(W/n, H/n));
+  const offX = Math.floor((W - size*n)/2);
+  const offY = Math.floor((H - size*n)/2);
+  const vmin = DATA.meta.sim_offdiag_min, vmax = DATA.meta.sim_offdiag_max;
+  heatCells = [];
+
+  for(let i=0;i<n;i++){
+    for(let j=0;j<n;j++){
+      const v = SIM[i][j];
+      const x = offX + j*size, y = offY + i*size;
+      if(i===j){
+        ctx.fillStyle = '#ffffff';   // 对角线=自己跟自己, 用卡片底色, 不与蓝底抢视觉
+      } else {
+        ctx.fillStyle = lerpColor((v-vmin)/(vmax-vmin));
+      }
+      ctx.fillRect(x,y,size,size);
+      heatCells.push({x,y,size,i,j,v});
+    }
+  }
+  // 选中行/列高亮
+  if(selected!==null && selected!==undefined){
+    ctx.strokeStyle = '#18181b'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(offX+selected*size-.75, offY-.75, size*n+1.5, 0);
+  }
+  heat._off = {offX,offY,size,n};
+}
+
+heat.addEventListener('mousemove', e => {
+  const r = heat.getBoundingClientRect();
+  const x = e.clientX-r.left, y = e.clientY-r.top;
+  const o = heat._off; if(!o) return;
+  const j = Math.floor((x-o.offX)/o.size), i = Math.floor((y-o.offY)/o.size);
+  if(i<0||j<0||i>=o.n||j>=o.n){ heatTip.classList.remove('on'); return; }
+  const v = SIM[i][j];
+  heatTip.textContent = `#${i} ↔ #${j}  sim=${v.toFixed(3)}`;
+  heatTip.style.left = Math.min(x+14, r.width-200)+'px';
+  heatTip.style.top = (y+16)+'px';
+  heatTip.classList.add('on');
+});
+heat.addEventListener('mouseleave', ()=>heatTip.classList.remove('on'));
+heat.addEventListener('click', e => {
+  const r = heat.getBoundingClientRect();
+  const o = heat._off; if(!o) return;
+  const j = Math.floor((e.clientX-r.left-o.offX)/o.size), i = Math.floor((e.clientY-r.top-o.offY)/o.size);
+  if(i<0||j<0||i>=o.n||j>=o.n) return;
+  select(i);
+});
+
+/* ---------------- scatter ---------------- */
+const scat = document.getElementById('scatter');
+const scatTip = document.getElementById('scatTip');
+let scatPts = [];
+
+function drawScatter(){
+  const W = scat.clientWidth, H = 320;
+  const dpr = window.devicePixelRatio || 1;
+  scat.width=W*dpr; scat.height=H*dpr; scat.style.height=H+'px';
+  const ctx = scat.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const pad = 26;
+  const iw = W-pad*2, ih = H-pad*2;
+
+  // 网格
+  ctx.strokeStyle='rgba(0,0,0,.045)'; ctx.lineWidth=1;
+  for(let g=0;g<=4;g++){
+    const gx = pad+iw*g/4, gy = pad+ih*g/4;
+    ctx.beginPath(); ctx.moveTo(gx,pad); ctx.lineTo(gx,pad+ih); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad,gy); ctx.lineTo(pad+iw,gy); ctx.stroke();
+  }
+  // 边框
+  ctx.strokeStyle='rgba(0,0,0,.10)'; ctx.strokeRect(pad,pad,iw,ih);
+
+  // 坐标轴标签
+  ctx.fillStyle='#a1a1aa';
+  ctx.font='10px "JetBrains Mono", monospace';
+  ctx.textAlign='center';
+  ctx.fillText('PC1', pad+iw/2, H-8);
+  ctx.save();
+  ctx.translate(11, pad+ih/2); ctx.rotate(-Math.PI/2);
+  ctx.fillText('PC2', 0, 0);
+  ctx.restore();
+  ctx.textAlign='left';
+
+  scatPts=[];
+  for(let i=0;i<CH.length;i++){
+    const x = pad + CO[i][0]*iw;
+    const y = pad + (1-CO[i][1])*ih;
+    const d = docOf(i);
+    const sel = (i===selected);
+    ctx.beginPath();
+    ctx.arc(x,y, sel?7:4.5, 0, Math.PI*2);
+    ctx.fillStyle = d.color;
+    ctx.globalAlpha = sel?1:(selected!==null&&selected!==undefined?.32:1);
+    ctx.fill();
+    ctx.globalAlpha=1;
+    if(sel){ ctx.strokeStyle='#18181b'; ctx.lineWidth=2; ctx.stroke(); }
+    scatPts.push({x,y,i});
+  }
+}
+scat.addEventListener('mousemove', e=>{
+  const r = scat.getBoundingClientRect();
+  const x=e.clientX-r.left, y=e.clientY-r.top;
+  let hit=null;
+  for(const p of scatPts){ if((p.x-x)**2+(p.y-y)**2 < 100){ hit=p; break; } }
+  if(!hit){ scatTip.classList.remove('on'); return; }
+  const t = txtOf(hit.i);
+  scatTip.textContent = `#${hit.i} · ${CH[hit.i].filename.replace(/^[0-9a-f]+_/,'')}\n${t.slice(0,70)}…`;
+  scatTip.style.whiteSpace='pre-line';
+  scatTip.style.left = Math.min(x+14, r.width-250)+'px';
+  scatTip.style.top = (y+16)+'px';
+  scatTip.classList.add('on');
+});
+scat.addEventListener('mouseleave', ()=>scatTip.classList.remove('on'));
+scat.addEventListener('click', e=>{
+  const r = scat.getBoundingClientRect();
+  const x=e.clientX-r.left, y=e.clientY-r.top;
+  for(const p of scatPts){ if((p.x-x)**2+(p.y-y)**2 < 100){ select(p.i); return; } }
+});
+
+/* ---------------- list + search ---------------- */
+const listEl = document.getElementById('list');
+const qEl = document.getElementById('q');
+const hitCount = document.getElementById('hitCount');
+
+function renderList(){
+  const q = qEl.value.trim().toLowerCase();
+  const rows = [];
+  for(let i=0;i<CH.length;i++){
+    const c = CH[i];
+    const hay = (c.filename + ' ' + c.text).toLowerCase();
+    if(q && !hay.includes(q)) continue;
+    rows.push(i);
+  }
+  hitCount.textContent = q ? `${rows.length} / ${CH.length} 段匹配` : `${CH.length} 段`;
+  if(!rows.length){ listEl.innerHTML='<div class="empty">没有匹配的片段</div>'; return; }
+  listEl.innerHTML = rows.map(i=>{
+    const c=CH[i], d=docOf(i);
+    const t = txtOf(i) || '(空)';
+    return `<div class="item ${i===selected?'on':''}" data-i="${i}">
+      <span class="n">#${i}</span>
+      <span class="tx">${escapeHtml(t.slice(0,64))}</span>
+      <span class="tag" style="background:${d.color}1f;color:${d.color}">p${c.page+1}</span>
+    </div>`;
+  }).join('');
+  listEl.querySelectorAll('.item').forEach(el=>{
+    el.onclick = ()=> select(+el.dataset.i);
+  });
+}
+function escapeHtml(s){ return s.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+qEl.addEventListener('input', renderList);
+
+/* ---------------- detail ---------------- */
+function select(i){
+  selected = i;
+  renderList();
+  drawHeat();
+  drawScatter();
+  renderDetail();
+  const el = listEl.querySelector(`.item[data-i="${i}"]`);
+  if(el) el.scrollIntoView({block:'nearest', behavior:'smooth'});
+}
+
+function renderDetail(){
+  const c = CH[selected];
+  const d = docOf(selected);
+  document.getElementById('detailId').textContent = `#${selected}`;
+
+  // 最相似的 8 个（排除自己）
+  const others = [];
+  for(let j=0;j<CH.length;j++) if(j!==selected) others.push({j, v:SIM[selected][j]});
+  others.sort((a,b)=>b.v-a.v);
+  const top = others.slice(0,8);
+
+  document.getElementById('detailBody').innerHTML = `
+    <div class="detail-top">
+      <span class="pill doc"><span class="swatch" style="background:${d.color}"></span>${escapeHtml(c.filename.replace(/^[0-9a-f]+_/,''))}</span>
+      <span class="pill">片段 #${c.chunk_index}</span>
+      <span class="pill">第 ${c.page+1} / ${c.total_pages} 页</span>
+      <span class="pill">${c.words} 字</span>
+    </div>
+    <div class="chunk-text">${escapeHtml(c.text) || '<span style="color:#a1a1aa">(空内容)</span>'}</div>
+
+    <div class="sec-label">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+      最相似的 8 个片段
+    </div>
+    <div class="sim">
+      ${top.map(t=>`
+        <div class="sim-row" data-j="${t.j}">
+          <div class="sim-head">
+            <span class="sim-id">#${t.j}</span>
+            <span style="font-size:11.5px;color:#71717a">${escapeHtml(CH[t.j].filename.replace(/^[0-9a-f]+_/,''))}</span>
+            <span class="sim-score" style="color:${lerpColor(simT(t.v))}">${t.v.toFixed(3)}</span>
+          </div>
+          <div class="sim-track"><div class="sim-fill" style="width:${Math.max(2,simT(t.v)*100).toFixed(1)}%;background:${lerpColor(simT(t.v))}"></div></div>
+          <div class="sim-tx">${escapeHtml(txtOf(t.j).slice(0,90))}</div>
+        </div>`).join('')}
+    </div>
+  `;
+  document.getElementById('detailBody').querySelectorAll('.sim-row').forEach(el=>{
+    el.onclick = ()=> select(+el.dataset.j);
+  });
+}
+
+/* ---------------- init ---------------- */
+function init(){
+  drawHeat(); drawScatter(); renderList(); renderDetail();
+  let t;
+  window.addEventListener('resize', ()=>{ clearTimeout(t); t=setTimeout(()=>{drawHeat();drawScatter();},140); });
+}
+init();
+</script>
+</body>
+</html>
